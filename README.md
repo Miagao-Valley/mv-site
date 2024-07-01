@@ -51,3 +51,6 @@ This project belongs to the open-source community named Miagao Valley 🇵🇭. 
 
 ![Miagao Valley Logo-04](https://github.com/Miagao-Valley/mv-site/assets/113810517/d92a2263-b553-4939-b946-ac8997ca407b)
 
+## 📚 License
+[MIT](https://choosealicense.com/licenses/mit/)
+
