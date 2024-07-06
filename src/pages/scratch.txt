@@ -1,0 +1,48 @@
+<Grid variant="small">
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Ezra Magbanua"
+								githubLink="https://github.com/ezerssss"
+								linkedInLink="https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+							/>
+						</li>
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Jhoanna Olana"
+							/>
+						</li>
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Rian Mabait"
+							/>
+						</li>
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Paige Aguirre"
+								githubLink="https://github.com/ezerssss"
+								linkedInLink="https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+							/>
+						</li>
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Ezra Magbanua"
+							/>
+						</li>
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Ezra Magbanua"
+							/>
+						</li>
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/ezra-magbanua.jpg"
+								name="Ezra Magbanua"
+							/>
+						</li>
+					</Grid>
