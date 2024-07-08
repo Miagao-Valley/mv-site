@@ -1,58 +1,79 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactCTA from "../components/ContactCTA.astro";
+import Grid from "../components/Grid.astro";
+import Hero from "../components/Hero.astro";
+import ProfileCard from "../components/ProfileCard.astro";
 
-import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
+import members from "../content/data/members.json";
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
-				/>
-			</Hero>
+<BaseLayout title="About | Miagao Valley" description="">
+	<div class="stack gap-20 lg:gap-48">
+		<main class="wrapper stack gap-20 lg:gap-48">
+			<div class="wrapper about">
+				<Hero title="Meet our Community" tagline="">
+					<img
+						width="776.5"
+						height="436.5"
+						src="/assets/at-work.jpg"
+						alt="Jeanine White at work with a colleague"
+					/>
+				</Hero>
+				<section class="description">
+					<h2 class="section-title">Vision</h2>
+					<div class="content">
+						<p>
+							Our goal is to elevate the skills of students in
+							coding and project management skills, help them in
+							developing real and engaging projects for their
+							portfolios, and foster a community where students
+							are not afraid to learn new ideas, technologies, and
+							responsibilities.
+						</p>
+					</div>
+				</section>
 
-			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
+				<section class="description">
+					<h2 class="section-title">Mission</h2>
+					<div class="content">
+						<p>
+							Ultrices tincidunt arcu non sodales neque sodales
+							ut. Sed enim ut sem viverra aliquet eget sit amet.
+							Lacus luctus accumsan tortor posuere ac ut consequat
+							semper viverra. Viverra accumsan in nisl nisi
+							scelerisque eu ultrices. In massa tempor nec feugiat
+							nisl pretium fusce.
+						</p>
+					</div>
+				</section>
+			</div>
+
+			<section class="section with-background">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Members</h3>
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy.
-						Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						Miagao Valley thrives thanks to the ongoing support of
+						its community. Explore their social media and engage to
+						be part of this amazing initiative!
 					</p>
-					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
-					</p>
-					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
-					</p>
-				</div>
-			</section>
-			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
-				</div>
-			</section>
-			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
-					<p>officia unde omnis</p>
+				</header>
+
+				<div class="gallery">
+					<Grid variant="small">
+						{
+							members.map((member) => (
+								<li>
+									<ProfileCard
+										imagePath={member.imagePath}
+										name={member.name}
+										githubLink={member.githubLink}
+										linkedInLink={member.linkedInLink}
+									/>
+								</li>
+							))
+						}
+					</Grid>
 				</div>
 			</section>
 		</main>
@@ -74,7 +95,7 @@ import Hero from '../components/Hero.astro';
 		box-shadow: var(--shadow-md);
 	}
 
-	section {
+	.description {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
@@ -112,9 +133,77 @@ import Hero from '../components/Hero.astro';
 			grid-column-start: 2;
 		}
 
-		section {
+		.description {
 			display: contents;
 			font-size: var(--text-lg);
+		}
+	}
+
+	/** */
+
+	.section {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.with-background {
+		position: relative;
+	}
+
+	.with-background::before {
+		--hero-bg: var(--bg-image-subtle-2);
+
+		content: "";
+		position: absolute;
+		pointer-events: none;
+		left: 50%;
+		width: 100vw;
+		aspect-ratio: calc(2.25 / var(--bg-scale));
+		top: 0;
+		transform: translateY(-75%) translateX(-50%);
+		background:
+			url("/assets/backgrounds/noise.png") top center/220px repeat,
+			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
+			var(--gray-999);
+		background-blend-mode: overlay, normal, normal, normal;
+		mix-blend-mode: var(--bg-blend-mode);
+		z-index: -1;
+	}
+
+	.with-background.bg-variant::before {
+		--hero-bg: var(--bg-image-subtle-1);
+	}
+
+	.section-header {
+		justify-self: center;
+		text-align: center;
+		max-width: 50ch;
+		font-size: var(--text-md);
+		color: var(--gray-300);
+	}
+
+	.section-header h3 {
+		font-size: var(--text-2xl);
+	}
+
+	@media (min-width: 50em) {
+		.section {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-areas: "header header header header" "gallery gallery gallery gallery";
+			gap: 5rem;
+		}
+
+		.section-header {
+			grid-area: header;
+			font-size: var(--text-lg);
+		}
+
+		.section-header h3 {
+			font-size: var(--text-4xl);
+		}
+
+		.gallery {
+			grid-area: gallery;
 		}
 	}
 </style>
