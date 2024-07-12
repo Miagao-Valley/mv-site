@@ -22,6 +22,8 @@ const projects = (await getCollection("work")).sort(
 		<main class="wrapper stack gap-8">
 			<Hero title="Our Projects" tagline="" align="start" />
 
+			<Search />
+
 			<Grid variant="offset">
 				{
 					projects.map((project) => (
