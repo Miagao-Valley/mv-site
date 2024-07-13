@@ -9,7 +9,7 @@ import CallToAction from "../components/CallToAction.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
-import Pill from "../components/Pill.astro";
+// import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
@@ -26,7 +26,7 @@ const projects = (await getCollection("work"))
 ---
 
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48">
+	<div class="stack gap-20 lg:gap-48" data-pagefind-ignore>
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero

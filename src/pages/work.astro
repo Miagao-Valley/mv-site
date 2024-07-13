@@ -7,7 +7,6 @@ import ContactCTA from "../components/ContactCTA.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 import Hero from "../components/Hero.astro";
 import Grid from "../components/Grid.astro";
-import Search from "../components/Search.astro";
 
 const projects = (await getCollection("work")).sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
@@ -22,7 +21,19 @@ const projects = (await getCollection("work")).sort(
 		<main class="wrapper stack gap-8">
 			<Hero title="Our Projects" tagline="" align="start" />
 
-			<Search />
+			<div class="search-container">
+				<div id="search"></div>
+
+				<script>
+					window.addEventListener("DOMContentLoaded", (event) => {
+						// @ts-ignore
+						new PagefindUI({
+							element: "#search",
+							showSubResults: true,
+						});
+					});
+				</script>
+			</div>
 
 			<Grid variant="offset">
 				{
