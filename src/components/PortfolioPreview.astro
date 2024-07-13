@@ -17,13 +17,6 @@ const { data, slug } = Astro.props.project;
 		loading="lazy"
 		decoding="async"
 	/>
-	{
-		data.tags.map((tag) => (
-			<div class="tech">
-				<Pill>{tag}</Pill>
-			</div>
-		))
-	}
 </a>
 
 <style>
