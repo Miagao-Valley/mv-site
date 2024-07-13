@@ -1,7 +1,11 @@
-<div id="search" transition:persist></div>
+<div id="search"></div>
 <script>
     window.addEventListener("DOMContentLoaded", (event) => {
         // @ts-ignore
-        new PagefindUI({ element: "#search", showSubResults: true });
+        let search = new PagefindUI({
+            element: "#search",
+            showSubResults: true,
+        });
+        search.triggerFilters({ Category: ["Documentation", "Marketing"] });
     });
 </script>
