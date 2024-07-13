@@ -6,9 +6,9 @@ img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
 tags:
-  - Design
-  - Dev
-  - User Testing
+  - java
+  - mod
+  - fabric
 ---
 
 ## Level-two heading
