@@ -1,8 +1,6 @@
 ---
 import { getCollection } from "astro:content";
 
-import { topLanguages } from "../content/data/fetchers.js";
-
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -11,6 +9,7 @@ import CallToAction from "../components/CallToAction.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
+
 // import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
@@ -91,23 +90,78 @@ const projects = (await getCollection("work"))
 					</p>
 				</header>
 
-				<div class="gallery">
+				<!-- <div class="gallery">
 					<Grid variant="small">
-						{
-							Object.keys(topLanguages).map((language) => (
-								<li class="mention-card">
-									<p>{language}</p>
-								</li>
-							))
-						}
 					</Grid>
-				</div>
+				</div> -->
+
+				<div id="topLanguages"></div>
 			</section>
 		</main>
 
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<script>
+	import { Chart } from "chart.js/auto";
+	import { topLanguages, totalLangUsage } from "../content/data/fetchers.js";
+
+	const container = document.getElementById("topLanguages")!;
+
+	const accentLight = "#c561f6";
+	const accentRegular = "#7611a6";
+	const accentDark = "#1c0056";
+	const gray900 = "#f3f4f7";
+	const gray999 = "#ffffff";
+
+	Chart.defaults.font.family = 'Public Sans';
+
+	function renderChart(label: string, data: number[]) {
+		const div = document.createElement("div");
+		div.style.width = "200px";
+
+		const canvas = document.createElement("canvas");
+		canvas.id = label;
+
+		div.appendChild(canvas);
+		container.appendChild(div);
+
+		const ctx = canvas.getContext("2d")!;
+
+		const accentGrad = ctx.createLinearGradient(0, 0, 280, 0);
+		accentGrad.addColorStop(0, accentLight);
+		accentGrad.addColorStop(0.75, accentRegular);
+		accentGrad.addColorStop(1, accentDark);
+
+		const bgGrad = ctx.createLinearGradient(0, 0, 280, 0);
+		bgGrad.addColorStop(0, gray900);
+		bgGrad.addColorStop(1, gray999);
+
+		const dataset = {
+			labels: [label],
+			datasets: [
+				{
+					data: data,
+					backgroundColor: [accentGrad, bgGrad],
+					hoverOffset: 4,
+				},
+			],
+		};
+
+		const config = {
+			type: "doughnut",
+			data: dataset,
+		};
+
+		return new Chart(canvas, config);
+	}
+
+	for (const [key, value] of Object.entries(topLanguages)) {
+		let values = [value, totalLangUsage - value];
+		renderChart(key, values);
+	}
+</script>
 
 <style>
 	.hero {

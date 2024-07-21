@@ -1,6 +1,6 @@
 import { Octokit } from "octokit";
 
-export { topLanguages };
+export { topLanguages, totalLangUsage };
 
 const octokit = new Octokit({
     auth: await (import.meta.env.GITHUB_API_KEY),
@@ -47,20 +47,35 @@ async function fetchLanguages(org) {
 
 async function getTopLangauges(org) {
     const langauges = await fetchLanguages(org);
-    const topLanguages = {};
+    const topLanguagesObj = {};
 
+    // get cumulative values of each languages
     langauges.forEach(language => {
         for (const [key, value] of Object.entries(language)) {
-            if (key in Object.keys(topLanguages)) {
-                topLanguages[key] += value;
+            if (key in Object.keys(topLanguagesObj)) {
+                topLanguagesObj[key] += value;
             } else {
-                topLanguages[key] = value;
+                topLanguagesObj[key] = value;
             }
         }
     });
 
-    return topLanguages;
+    return topLanguagesObj;
+
+    // // turn into array
+    // const topLanguagesArr = [];
+
+    // for (const [key, value] of Object.entries(topLanguagesObj)) {
+    //     let obj = { [key]: value };
+    //     topLanguagesArr.push(obj)
+    // }
+
+    // return topLanguagesArr;
 }
 
-export const topLanguages = await getTopLangauges(org);
+const altLanguages = {'Javascript': 100, 'Astro': 200, 'CSS': 50};
+const topLanguages = await getTopLangauges(org).catch(() => { altLanguages });;
 
+let totalLangUsage = 0;
+
+Object.values(topLanguages).map((count) => (totalLangUsage += count));
