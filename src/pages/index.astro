@@ -117,7 +117,7 @@ const projects = (await getCollection("work"))
 	Chart.defaults.font.family = "Public Sans";
 	Chart.defaults.font.size = 16;
 
-	function renderChart(label: string, data: number[]) {
+	function renderChart(label: string, values: number[]) {
 		const li = document.createElement("li");
 		li.style.display = "flex";
 		li.style.justifyContent = "center";
@@ -145,7 +145,7 @@ const projects = (await getCollection("work"))
 		const dataset = {
 			datasets: [
 				{
-					data: data,
+					data: values,
 					backgroundColor: [accentGrad, bgGrad],
 					hoverOffset: 4,
 					borderColor: "rgba(1, 1, 1, 0)",
@@ -158,8 +158,8 @@ const projects = (await getCollection("work"))
 
 		const doughnutLabel = {
 			id: "doughnutLabel",
-			beforeDatasetsDraw(chart: any, args: any, pluginOptions: any) {
-				const { ctx, data } = chart;
+			beforeDatasetsDraw(chart: any) {
+				const { ctx } = chart;
 				ctx.save();
 				const xCor = chart.getDatasetMeta(0).data[0].x;
 				const yCor = chart.getDatasetMeta(0).data[0].y;
