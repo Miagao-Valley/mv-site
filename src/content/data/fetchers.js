@@ -45,9 +45,13 @@ async function fetchLanguages(org) {
     return langs;
 }
 
+
+
 async function getTopLangauges(org) {
+
     const langauges = await fetchLanguages(org);
-    const topLanguagesObj = {};
+    const topLanguagesObj = {
+    };
 
     // get cumulative values of each languages
     langauges.forEach(language => {
@@ -60,22 +64,36 @@ async function getTopLangauges(org) {
         }
     });
 
-    return topLanguagesObj;
+    // return topLanguagesObj;
 
-    // // turn into array
-    // const topLanguagesArr = [];
+    // turn into array
+    const topLanguagesArr = [];
 
-    // for (const [key, value] of Object.entries(topLanguagesObj)) {
-    //     let obj = { [key]: value };
-    //     topLanguagesArr.push(obj)
-    // }
+    for (const [key, value] of Object.entries(topLanguagesObj)) {
+        let obj = {
+            "name": key,
+            "value": value
+        };
+        topLanguagesArr.push(obj)
+    }
 
-    // return topLanguagesArr;
+    return topLanguagesArr.sort((a, b) => (b.value - a.value));
+
 }
 
-const altLanguages = {'Javascript': 100, 'Astro': 200, 'CSS': 50};
-const topLanguages = await getTopLangauges(org).catch(() => { altLanguages });;
+const altLangauges = [
+    // { name: 'Astro', value: 42790 },
+    { name: 'TypeScript', value: 9793 },
+    { name: 'JavaScript', value: 7247 },
+    { name: 'EJS', value: 4645 },
+    { name: 'HTML', value: 1967 },
+    { name: 'Java', value: 1824 },
+    { name: 'CSS', value: 765 }
+];
+
+const topLanguages = altLangauges;
 
 let totalLangUsage = 0;
 
-Object.values(topLanguages).map((count) => (totalLangUsage += count));
+topLanguages.map((lang) => (totalLangUsage += lang.value));
+

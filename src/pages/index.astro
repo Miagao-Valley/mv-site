@@ -90,12 +90,9 @@ const projects = (await getCollection("work"))
 					</p>
 				</header>
 
-				<!-- <div class="gallery">
-					<Grid variant="small">
-					</Grid>
-				</div> -->
-
-				<div id="topLanguages"></div>
+				<div class="gallery">
+					<Grid variant="small" id="topLanguages" />
+				</div>
 			</section>
 		</main>
 
@@ -107,36 +104,42 @@ const projects = (await getCollection("work"))
 	import { Chart } from "chart.js/auto";
 	import { topLanguages, totalLangUsage } from "../content/data/fetchers.js";
 
-	const container = document.getElementById("topLanguages")!;
+	const container = document.querySelector("#topLanguages.grid")!;
 
-	const accentLight = "#c561f6";
-	const accentRegular = "#7611a6";
-	const accentDark = "#1c0056";
-	const gray900 = "#f3f4f7";
-	const gray999 = "#ffffff";
+	const colors = {
+		accentLight: "#c561f6",
+		accentRegular: "#7611a6",
+		accentDark: "#1c0056",
+		gray900: "#f3f4f7",
+		gray999: "#ffffff",
+	};
 
-	Chart.defaults.font.family = 'Public Sans';
+	Chart.defaults.font.family = "Public Sans";
 
 	function renderChart(label: string, data: number[]) {
-		const div = document.createElement("div");
-		div.style.width = "200px";
+		const li = document.createElement("li");
+		li.style.display = "flex";
+		li.style.justifyContent = "center";
+
+		const chartContainer = document.createElement("div");
+		chartContainer.style.width = "200px";
 
 		const canvas = document.createElement("canvas");
 		canvas.id = label;
 
-		div.appendChild(canvas);
-		container.appendChild(div);
+		chartContainer.appendChild(canvas);
+		li.appendChild(chartContainer);
+		container.appendChild(li);
 
 		const ctx = canvas.getContext("2d")!;
 
 		const accentGrad = ctx.createLinearGradient(0, 0, 280, 0);
-		accentGrad.addColorStop(0, accentLight);
-		accentGrad.addColorStop(0.75, accentRegular);
-		accentGrad.addColorStop(1, accentDark);
+		accentGrad.addColorStop(0, colors.accentLight);
+		accentGrad.addColorStop(1, colors.accentDark);
 
 		const bgGrad = ctx.createLinearGradient(0, 0, 280, 0);
-		bgGrad.addColorStop(0, gray900);
-		bgGrad.addColorStop(1, gray999);
+		bgGrad.addColorStop(0, colors.gray900);
+		bgGrad.addColorStop(1, colors.gray999);
 
 		const dataset = {
 			labels: [label],
@@ -145,22 +148,24 @@ const projects = (await getCollection("work"))
 					data: data,
 					backgroundColor: [accentGrad, bgGrad],
 					hoverOffset: 4,
+					borderColor: "rgba(1, 1, 1, 0)",
 				},
 			],
 		};
 
-		const config = {
+		
+		const chart = new Chart(ctx, {
 			type: "doughnut",
 			data: dataset,
-		};
+		});
 
-		return new Chart(canvas, config);
+		return chart;
 	}
 
-	for (const [key, value] of Object.entries(topLanguages)) {
-		let values = [value, totalLangUsage - value];
-		renderChart(key, values);
-	}
+	topLanguages.forEach((lang) => {
+		let values = [lang.value, totalLangUsage - lang.value];
+		renderChart(lang.name, values);
+	});
 </script>
 
 <style>
@@ -289,7 +294,6 @@ const projects = (await getCollection("work"))
 
 	.mention-card {
 		display: flex;
-		height: 7rem;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
