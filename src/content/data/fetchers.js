@@ -64,8 +64,6 @@ async function getTopLangauges(org) {
         }
     });
 
-    // return topLanguagesObj;
-
     // turn into array
     const topLanguagesArr = [];
 
@@ -91,7 +89,7 @@ const altLangauges = [
     { name: 'CSS', value: 765 }
 ];
 
-const topLanguages = altLangauges;
+const topLanguages = await getTopLangauges(org) ?? altLangauges;
 
 let totalLangUsage = 0;
 
