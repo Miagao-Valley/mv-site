@@ -1,14 +1,15 @@
 ---
-title: rough leaderboards
-publishDate: 2019-03-02 00:00:00
+title: mv-bot
+startDate: 2020-06-28 00:00:00
 img: /assets/stock-1.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
 tags:
-  - java
-  - mod
-  - fabric
+  - express.js
+  - bot
+  - EJS
+  - octokit
 ---
 
 ## Level-two heading

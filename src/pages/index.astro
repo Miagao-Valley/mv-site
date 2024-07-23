@@ -15,14 +15,13 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
-import Skills from "../components/Benefits.astro";
 import Langauages from "../components/Langauages.astro";
 import Statistics from "../components/Statistics.astro";
 import Benefits from "../components/Benefits.astro";
 
 // Content Fetching: List four most recent projects
 const projects = (await getCollection("projects"))
-	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+	.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf())
 	.slice(0, 4);
 ---
 
