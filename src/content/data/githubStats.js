@@ -109,7 +109,14 @@ async function getNumMembers(org) {
         return alt.numMembers;
     }
 
-    return members.data.length;
+    const numMembers = members.data.length;
+    
+    if (numMembers == 0) {
+        return alt.numMembers;
+
+    }
+
+    return numMembers;
 }
 
 async function getNumProjs(org) {
