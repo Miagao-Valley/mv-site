@@ -15,7 +15,10 @@ import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
-import Skills from "../components/Skills.astro";
+import Skills from "../components/Benefits.astro";
+import Langauages from "../components/Langauages.astro";
+import Statistics from "../components/Statistics.astro";
+import Benefits from "../components/Benefits.astro";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("work"))
@@ -47,10 +50,11 @@ const projects = (await getCollection("work"))
 				/> -->
 			</header>
 
-			<Skills />
+			<Benefits />
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
+
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Projects</h3>
@@ -80,18 +84,21 @@ const projects = (await getCollection("work"))
 				</div>
 			</section>
 
+			<Statistics />
+
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mentions</h3>
+					<h3>Languages Used</h3>
 					<p>
-						I have been fortunate enough to receive praise for my
-						work in several publications. Take a look below to learn
-						more.
+						Our projects utilize a diverse range of programming
+						languages to build various compelling software and web
+						applications. Take a look at some of the languages we
+						work with:
 					</p>
 				</header>
 
 				<div class="gallery">
-					<Grid variant="small" id="topLanguages" />
+					<Langauages />
 				</div>
 			</section>
 		</main>
@@ -99,90 +106,6 @@ const projects = (await getCollection("work"))
 		<ContactCTA />
 	</div>
 </BaseLayout>
-
-<script>
-	import { Chart } from "chart.js/auto";
-	import { topLanguages, totalLangUsage } from "../content/data/fetchers.js";
-
-	const container = document.querySelector("#topLanguages.grid")!;
-
-	const colors = {
-		accentLight: "#c561f6",
-		accentRegular: "#7611a6",
-		accentDark: "#1c0056",
-		gray900: "#f3f4f7",
-		gray999: "#ffffff",
-	};
-
-	Chart.defaults.font.family = "Public Sans";
-	Chart.defaults.font.size = 16;
-
-	function renderChart(label: string, values: number[]) {
-		const li = document.createElement("li");
-		li.style.display = "flex";
-		li.style.justifyContent = "center";
-
-		const chartContainer = document.createElement("div");
-		chartContainer.style.width = "200px";
-
-		const canvas = document.createElement("canvas");
-		canvas.id = label;
-
-		chartContainer.appendChild(canvas);
-		li.appendChild(chartContainer);
-		container.appendChild(li);
-
-		const ctx = canvas.getContext("2d")!;
-
-		const accentGrad = ctx.createLinearGradient(0, 0, 280, 0);
-		accentGrad.addColorStop(0, colors.accentLight);
-		accentGrad.addColorStop(1, colors.accentDark);
-
-		const bgGrad = ctx.createLinearGradient(0, 0, 280, 0);
-		bgGrad.addColorStop(0, colors.gray900);
-		bgGrad.addColorStop(1, colors.gray999);
-
-		const dataset = {
-			datasets: [
-				{
-					data: values,
-					backgroundColor: [accentGrad, bgGrad],
-					hoverOffset: 4,
-					borderColor: "rgba(1, 1, 1, 0)",
-					cutout: "90%",
-					borderJoinStyle: "round",
-					borderRadius: 1,
-				},
-			],
-		};
-
-		const doughnutLabel = {
-			id: "doughnutLabel",
-			beforeDatasetsDraw(chart: any) {
-				const { ctx } = chart;
-				ctx.save();
-				const xCor = chart.getDatasetMeta(0).data[0].x;
-				const yCor = chart.getDatasetMeta(0).data[0].y;
-				ctx.textAlign = "center";
-				ctx.textBaseline = "middle";
-				ctx.fillText(label, xCor, yCor);
-			},
-		};
-
-		const chart = new Chart(ctx, {
-			type: "doughnut",
-			data: dataset,
-			plugins: [doughnutLabel],
-		});
-
-		return chart;
-	}
-
-	topLanguages.forEach((lang) => {
-		let values = [lang.value, totalLangUsage - lang.value];
-		renderChart(lang.name, values);
-	});
-</script>
 
 <style>
 	.hero {
