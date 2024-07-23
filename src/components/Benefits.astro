@@ -2,7 +2,7 @@
 import Icon from "./Icon.astro";
 ---
 
-<section class="box skills">
+<section class="box benefits">
 	<div class="stack gap-2 lg:gap-4">
 		<Icon
 			icon="code"
@@ -10,8 +10,12 @@ import Icon from "./Icon.astro";
 			size="2.5rem"
 			gradient
 		/>
-		<h2>Create quality projects</h2>
-		<p>Have the opportunity to work on interesting projects.</p>
+		<h2>Skills Development</h2>
+		<p>
+			Improve technical and project management benefits through through
+			collaboration on projects and learning from other skilled community
+			members.
+		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
 		<Icon
@@ -20,10 +24,10 @@ import Icon from "./Icon.astro";
 			size="2.5rem"
 			gradient
 		/>
-		<h2>Upgrade technical skills</h2>
+		<h2>Portfolio Building</h2>
 		<p>
-			Improve technical skills through collaboration on projects and
-			learning from other community members.
+			Add compelling projects to your portfolio to attract future
+			employers or clients.
 		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
@@ -33,10 +37,10 @@ import Icon from "./Icon.astro";
 			size="2.5rem"
 			gradient
 		/>
-		<h2>Boost portfolios</h2>
+		<h2>Networking Opportunities</h2>
 		<p>
-			Add compelling projects to your portfolio to attract future
-			employers or clients.
+			Connect with fellow students, alumni, and mentors to gain insights
+			and potential career connections.
 		</p>
 	</div>
 </section>
@@ -50,17 +54,17 @@ import Icon from "./Icon.astro";
 		box-shadow: var(--shadow-sm);
 	}
 
-	.skills {
+	.benefits {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
 	}
 
-	.skills h2 {
+	.benefits h2 {
 		font-size: var(--text-lg);
 	}
 
-	.skills p {
+	.benefits p {
 		color: var(--gray-400);
 	}
 
@@ -70,13 +74,13 @@ import Icon from "./Icon.astro";
 			padding: 2.5rem;
 		}
 
-		.skills {
+		.benefits {
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			gap: 5rem;
 		}
 
-		.skills h2 {
+		.benefits h2 {
 			font-size: var(--text-2xl);
 		}
 	}

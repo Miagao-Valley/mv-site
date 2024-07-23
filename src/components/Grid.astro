@@ -1,12 +1,13 @@
 ---
 interface Props {
 	variant?: 'offset' | 'small';
+	id?: string;
 }
 
-const { variant } = Astro.props;
+const { variant, id} = Astro.props;
 ---
 
-<ul class:list={['grid', { offset: variant === 'offset', small: variant === 'small' }]}>
+<ul id={id} class:list={['grid', { offset: variant === 'offset', small: variant === 'small' }]}>
 	<slot />
 </ul>
 

@@ -9,20 +9,21 @@ import CallToAction from "../components/CallToAction.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
+
 // import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
 
 // Page section components
 import ContactCTA from "../components/ContactCTA.astro";
-import Skills from "../components/Skills.astro";
+import Skills from "../components/Benefits.astro";
+import Langauages from "../components/Langauages.astro";
+import Statistics from "../components/Statistics.astro";
+import Benefits from "../components/Benefits.astro";
 
 // Content Fetching: List four most recent work projects
 const projects = (await getCollection("work"))
 	.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
 	.slice(0, 4);
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
 ---
 
 <BaseLayout>
@@ -49,10 +50,11 @@ const projects = (await getCollection("work"))
 				/> -->
 			</header>
 
-			<Skills />
+			<Benefits />
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
+
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Projects</h3>
@@ -82,27 +84,23 @@ const projects = (await getCollection("work"))
 				</div>
 			</section>
 
-			<!-- <section class="section with-background bg-variant">
+			<Statistics />
+
+			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mentions</h3>
+					<h3>Languages Used</h3>
 					<p>
-						I have been fortunate enough to receive praise for my work in several publications. Take
-						a look below to learn more.
+						Our projects utilize a diverse range of programming
+						languages to build various compelling software and web
+						applications. Take a look at some of the languages we
+						work with:
 					</p>
 				</header>
 
 				<div class="gallery">
-					<Grid variant="small">
-						{
-							['Medium', 'BuzzFeed', 'The Next Web', 'awwwards.', 'TechCrunch'].map((brand) => (
-								<li class="mention-card">
-									<p>{brand}</p>
-								</li>
-							))
-						}
-					</Grid>
+					<Langauages />
 				</div>
-			</section> -->
+			</section>
 		</main>
 
 		<ContactCTA />
@@ -235,7 +233,6 @@ const projects = (await getCollection("work"))
 
 	.mention-card {
 		display: flex;
-		height: 7rem;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
