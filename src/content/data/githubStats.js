@@ -3,8 +3,10 @@ import { Octokit } from "octokit";
 export { languages, totalLangUsage, numMembers, numProjects, numStars };
 
 const octokit = new Octokit({
-    auth: await (import.meta.env.GITHUB_API_KEY),
+    auth: import.meta.env.PUBLIC_GITHUB_API_KEY,
 });
+
+console.log(import.meta.env.PUBLIC_GITHUB_API_KEY);
 
 const org = 'Miagao-Valley';
 

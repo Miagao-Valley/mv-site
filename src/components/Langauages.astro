@@ -6,16 +6,13 @@ import Grid from "./Grid.astro";
 
 <script>
     import { Chart } from "chart.js/auto";
-    import {
-        languages,
-        totalLangUsage,
-    } from "../content/data/githubStats.js";
+    import { languages, totalLangUsage } from "../content/data/githubStats.js";
 
     const container = document.querySelector("#languages.grid")!;
 
     const colors = {
-        accentLight: "#c561f6",
-        accentDark: "#1c0056",
+        accentLight: "#92D5DA",
+        accentDark: "#3E007D",
         gray900: "#f3f4f7",
         gray999: "#ffffff",
     };
@@ -69,7 +66,7 @@ import Grid from "./Grid.astro";
                 const yCor = chart.getDatasetMeta(0).data[0].y;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "middle";
-                ctx.fillStyle = colors.accentLight;
+                ctx.fillStyle = colors.accentDark;
                 ctx.fillText(label, xCor, yCor);
             },
         };

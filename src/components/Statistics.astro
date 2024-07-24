@@ -4,18 +4,38 @@ import {
 	numProjects,
 	numStars,
 } from "../content/data/githubStats.js";
+
+import Icon from "./Icon.astro";
 ---
 
 <section class="box statistics">
-	<div class="stack gap-2 lg:gap-4">
-		<h2 class="gradient">{numProjects}</h2>
-		<p>Projects</p>
-	</div>
-	<div class="stack gap-2 lg:gap-4">
+	<div class="stack gap-2 lg:gap-4 center">
+		<Icon
+			icon="trophy"
+			color="var(--accent-regular)"
+			size="7rem"
+			gradient
+		/>
 		<h2 class="gradient">{numMembers}</h2>
 		<p>Members</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
+	<div class="stack gap-2 lg:gap-4 center">
+		<Icon
+			icon="trophy"
+			color="var(--accent-regular)"
+			size="7rem"
+			gradient
+		/>
+		<h2 class="gradient">{numProjects}</h2>
+		<p>Projects</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4 center">
+		<Icon
+			icon="trophy"
+			color="var(--accent-regular)"
+			size="7rem"
+			gradient
+		/>
 		<h2 class="gradient">{numStars}</h2>
 		<p>Stars</p>
 	</div>
@@ -37,15 +57,21 @@ import {
 		text-align: center;
 	}
 
-	.statistics h2 {
-		font-size: 5rem;
-	}
-
 	.gradient {
-		background: var(--gradient-accent);
+		background: linear-gradient(
+			0deg,
+			var(--gradient-stop-1),
+			var(--gradient-stop-2),
+			var(--gradient-stop-3)
+		);
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;
+	}
+
+	.center {
+		align-items: center;
+		justify-content: center;
 	}
 
 	@media (min-width: 50em) {

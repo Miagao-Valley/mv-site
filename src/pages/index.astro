@@ -48,6 +48,7 @@ const projects = (await getCollection("projects"))
 					height="620"
 					src="/assets/portrait.jpg"
 				/> -->
+				<Statistics />
 			</header>
 
 			<Benefits />
@@ -83,8 +84,6 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<Statistics />
-
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Languages Used</h3>
@@ -112,6 +111,10 @@ const projects = (await getCollection("projects"))
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
+		/* border: 1px solid var(--gray-800);
+		border-radius: 1.5rem;
+		background-color: var(--gradient-accent);
+		box-shadow: var(--shadow-sm); */
 	}
 
 	.roles {
@@ -130,7 +133,7 @@ const projects = (await getCollection("projects"))
 		.hero {
 			display: grid;
 			/* grid-template-columns: 6fr 4fr; */
-			padding-inline: 2.5rem;
+			padding: 2.5rem 5rem;
 			gap: 3.75rem;
 		}
 
