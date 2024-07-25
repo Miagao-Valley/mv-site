@@ -24,7 +24,7 @@ const iconLinks: {
 <nav data-pagefind-ignore>
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<img id="logo" width="60" height="60" src="/assets/logo.png" />
+			<img id="logo" width="50" height="50" src="/assets/logo.png" />
 		</a>
 		<menu-button>
 			<template>
@@ -299,8 +299,12 @@ const iconLinks: {
 			display: grid;
 			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
-			padding: 1.5rem 3rem;
+			padding: 1rem 3rem;
 			gap: 1rem;
+			border: 1px solid var(--gray-800);
+			border-radius: 0.75rem;
+			background-color: var(--gray-999_40);
+			box-shadow: var(--shadow-sm);
 		}
 
 		.menu-header {
@@ -321,6 +325,7 @@ const iconLinks: {
 			font-size: var(--text-base);
 			border: 0;
 			padding: 0;
+			background-color: transparent;
 		}
 
 		.link {

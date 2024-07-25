@@ -6,8 +6,6 @@ const octokit = new Octokit({
     auth: import.meta.env.PUBLIC_GITHUB_API_KEY,
 });
 
-console.log(import.meta.env.PUBLIC_GITHUB_API_KEY);
-
 const org = 'Miagao-Valley';
 
 const alt = {

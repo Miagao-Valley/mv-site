@@ -33,7 +33,8 @@ const projects = (await getCollection("projects"))
 				<Hero
 					title="Miagao Valley"
 					tagline="We’re an open-source community led by Computer Science students at the University of the Philippines Visayas."
-					align="center"
+					align="start"
+					color="white"
 				>
 					<!-- <div class="roles">
 						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
@@ -48,13 +49,30 @@ const projects = (await getCollection("projects"))
 					height="620"
 					src="/assets/portrait.jpg"
 				/> -->
-				<Statistics />
 			</header>
-
-			<Benefits />
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
+			<section class="section with-background with-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Our Community in Numbers</h3>
+				</header>
+
+				<div>
+					<Statistics />
+				</div>
+			</section>
+
+			<section class="section with-background with-cta">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Why Join Us?</h3>
+				</header>
+
+				<div>
+					<Benefits />
+				</div>
+			</section>
+
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Projects</h3>
@@ -111,10 +129,12 @@ const projects = (await getCollection("projects"))
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
-		/* border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
-		background-color: var(--gradient-accent);
-		box-shadow: var(--shadow-sm); */
+
+		border: 0;
+		border-radius: 0.75rem;
+		padding: 5rem;
+		box-shadow: var(--shadow-sm);
+		color: white;
 	}
 
 	.roles {
@@ -132,8 +152,8 @@ const projects = (await getCollection("projects"))
 	@media (min-width: 50em) {
 		.hero {
 			display: grid;
-			/* grid-template-columns: 6fr 4fr; */
-			padding: 2.5rem 5rem;
+			grid-template-columns: 6fr 4fr;
+			padding: 5rem;
 			gap: 3.75rem;
 		}
 
@@ -249,6 +269,49 @@ const projects = (await getCollection("projects"))
 		.mention-card {
 			border-radius: 1.5rem;
 			height: 9.5rem;
+		}
+	}
+
+	.hero {
+		background: linear-gradient(270deg, #67007d, #3e007d, #92d5da);
+		background-size: 600% 600%;
+
+		-webkit-animation: AnimationName 30s ease infinite;
+		-moz-animation: AnimationName 30s ease infinite;
+		animation: AnimationName 30s ease infinite;
+	}
+
+	@-webkit-keyframes AnimationName {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@-moz-keyframes AnimationName {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@keyframes AnimationName {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
 		}
 	}
 </style>
