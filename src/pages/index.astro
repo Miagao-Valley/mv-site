@@ -22,7 +22,7 @@ import Benefits from "../components/Benefits.astro";
 
 // Content Fetching: List four most recent projects
 const projects = (await getCollection("projects"))
-	.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf())
+	.sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf())
 	.slice(0, 4);
 ---
 
@@ -36,39 +36,30 @@ const projects = (await getCollection("projects"))
 					align="start"
 					color="white"
 				>
-					<!-- <div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
-					</div> -->
 				</Hero>
 
-				<!-- <img
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
-					width="480"
-					height="620"
-					src="/assets/portrait.jpg"
-				/> -->
 			</header>
-		</div>
-
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
+			
+			<section class="section with-background left">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Community in Numbers</h3>
 				</header>
 
-				<div>
+				<div class="gallery">
 					<Statistics />
 				</div>
 			</section>
+		</div>
 
-			<section class="section with-background with-cta">
+		<main class="wrapper stack gap-10 lg:gap-30">
+			
+
+			<section class="section with-background">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Why Join Us?</h3>
 				</header>
 
-				<div>
+				<div class="gallery">
 					<Benefits />
 				</div>
 			</section>
@@ -224,6 +215,16 @@ const projects = (await getCollection("projects"))
 			gap: 5rem;
 		}
 
+		.section.left {
+			grid-template-columns: 0.5fr 0.5fr 1fr 1fr;
+			grid-template-areas: "header header gallery gallery";
+		}
+
+		.section.right {
+			grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+			grid-template-areas: "gallery gallery header header";
+		}
+
 		.section.with-cta {
 			grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
 		}
@@ -235,6 +236,14 @@ const projects = (await getCollection("projects"))
 
 		.section-header h3 {
 			font-size: var(--text-4xl);
+		}
+
+		.left h3 {
+			text-align: left;
+		}
+
+		.right h3 {
+			text-align: right;
 		}
 
 		.with-cta .section-header {
@@ -276,12 +285,12 @@ const projects = (await getCollection("projects"))
 		background: linear-gradient(270deg, #67007d, #3e007d, #92d5da);
 		background-size: 600% 600%;
 
-		-webkit-animation: AnimationName 30s ease infinite;
-		-moz-animation: AnimationName 30s ease infinite;
-		animation: AnimationName 30s ease infinite;
+		-webkit-animation: GradientAnimation 30s ease infinite;
+		-moz-animation: GradientAnimation 30s ease infinite;
+		animation: GradientAnimation 30s ease infinite;
 	}
 
-	@-webkit-keyframes AnimationName {
+	@-webkit-keyframes GradientAnimation {
 		0% {
 			background-position: 0% 50%;
 		}
@@ -292,7 +301,8 @@ const projects = (await getCollection("projects"))
 			background-position: 0% 50%;
 		}
 	}
-	@-moz-keyframes AnimationName {
+
+	@-moz-keyframes GradientAnimation {
 		0% {
 			background-position: 0% 50%;
 		}
@@ -303,7 +313,8 @@ const projects = (await getCollection("projects"))
 			background-position: 0% 50%;
 		}
 	}
-	@keyframes AnimationName {
+
+	@keyframes GradientAnimation {
 		0% {
 			background-position: 0% 50%;
 		}

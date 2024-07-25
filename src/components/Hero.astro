@@ -16,8 +16,7 @@ const {
 
 <div class:list={["hero stack gap-4", align]}>
 	<div class="stack gap-2">
-		<h1 style=`font-size: var(--text-3xl);
-		color: ${color};`>
+		<h1 style=`color: ${color};` class="title">
 			{title}
 		</h1>
 		{tagline && <p class="tagline">{tagline}</p>}
@@ -45,7 +44,7 @@ const {
 
 	@media (min-width: 50em) {
 		.hero {
-			font-size: var(--text-xl);
+			font-size: var(--text-lg);
 		}
 
 		.start {
