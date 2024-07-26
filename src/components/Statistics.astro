@@ -4,62 +4,81 @@ import {
 	numProjects,
 	numStars,
 } from "../content/data/githubStats.js";
+
+import Icon from "./Icon.astro";
 ---
 
-<section class="box statistics">
-	<div class="stack gap-2 lg:gap-4">
-		<h2 class="gradient">{numProjects}</h2>
-		<p>Projects</p>
-	</div>
-	<div class="stack gap-2 lg:gap-4">
+<section class="statistics">
+	<div class="stack gap-2 lg:gap-2 box">
+		<Icon icon="people" size="2.5rem" color="var(--accent-dark)" />
 		<h2 class="gradient">{numMembers}</h2>
 		<p>Members</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
+	<div class="stack gap-2 lg:gap-4 box">
+		<Icon icon="terminal-window" size="2.5rem" color="var(--accent-dark)" />
+		<h2 class="gradient">{numProjects}</h2>
+		<p>Projects</p>
+	</div>
+	<div class="stack gap-2 lg:gap-4 box">
+		<Icon icon="star" size="2.5rem" color="var(--accent-dark)" />
 		<h2 class="gradient">{numStars}</h2>
 		<p>Stars</p>
 	</div>
 </section>
 
 <style>
-	.box {
+	.statistics {
 		border: 1px solid var(--gray-800);
 		border-radius: 0.75rem;
 		padding: 1.5rem;
 		background-color: var(--gray-999_40);
 		box-shadow: var(--shadow-sm);
-	}
 
-	.statistics {
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
 		text-align: center;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		row-gap: 2rem;
+		column-gap: 0rem;
+		width: 100%;
 	}
 
 	.statistics h2 {
-		font-size: 5rem;
+		font-size: var(--text-4xl);
 	}
 
-	
-
 	.gradient {
-		background: var(--gradient-accent);
+		background: linear-gradient(
+			0deg,
+			var(--gradient-stop-1),
+			var(--gradient-stop-2),
+			var(--gradient-stop-3)
+		);
 		-webkit-background-clip: text;
 		background-clip: text;
 		color: transparent;
 	}
 
-	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
+	.box {
+		align-items: center;
+		justify-content: center;
+	}
 
+	.box {
+		border-right: 1px solid var(--gray-700);
+	}
+
+	.box:last-child {
+		border-right: 0;
+	}
+	@media (min-width: 50em) {
 		.statistics {
+			border-radius: 1.5rem;
+			padding: 2rem 0rem;
 			display: grid;
 			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
+			row-gap: 2rem;
+			column-gap: 0rem;
+			width: 100%;
 		}
 	}
 </style>

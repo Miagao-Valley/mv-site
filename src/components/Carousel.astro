@@ -32,11 +32,15 @@ const { href } = Astro.props;
   const slides = document.querySelectorAll(".slide");
   const slidesLength = slides.length;
   let currentSlide = 0;
-  console.log(slidesLength);
+
   updateCarousel();
 
   const prevButton = document.getElementById("prev");
   const nextButton = document.getElementById("next");
+
+  if (slidesLength == 1) {
+    removeButton();
+  }
 
   if (prevButton && nextButton) {
     nextButton.addEventListener("click", () => {
@@ -72,7 +76,20 @@ const { href } = Astro.props;
       }
     });
   }
+
+  function removeButton() {
+    if (slidesLength == 1) {
+      console.log(slidesLength);
+      prevButton?.classList.remove("carousel-button");
+      prevButton?.classList.add("hidden");
+
+      nextButton?.classList.remove("carousel-button");
+      nextButton?.classList.add("hidden");
+      return;
+    }
+  }
 </script>
+
 <style>
   .carousel {
     position: relative;
@@ -86,15 +103,15 @@ const { href } = Astro.props;
     font-size: 3em;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--gray-400);
+    color: var(--gradient-500);
     opacity: 0.5;
     cursor: pointer;
     padding: 0 0.25em;
   }
 
-  .carousel-button:hover,
-  .carousel-button:focus {
-    color: var(--gray-100);
+  .carousel-button:hover {
+    opacity: 1;
+    color: var(--accent-regular);
   }
 
   .carousel-button.prev {
@@ -125,5 +142,9 @@ const { href } = Astro.props;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .hidden {
+    display: none;
   }
 </style>

@@ -1,6 +1,6 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
-import { iconPaths } from './IconPaths';
+import type { HTMLAttributes } from "astro/types";
+import { iconPaths } from "./IconPaths";
 
 interface Props {
 	icon: keyof typeof iconPaths;
@@ -9,13 +9,14 @@ interface Props {
 	size?: string;
 }
 
-const { color = 'currentcolor', gradient, icon, size } = Astro.props;
+const { color = "currentcolor", gradient, icon, size } = Astro.props;
 const iconPath = iconPaths[icon];
 
-const attrs: HTMLAttributes<'svg'> = {};
-if (size) attrs.style = { '--size': size };
+const attrs: HTMLAttributes<"svg"> = {};
+if (size) attrs.style = { "--size": size };
 
-const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString(36);
+const gradientId =
+	"icon-gradient-" + Math.round(Math.random() * 10e12).toString(36);
 ---
 
 <svg
@@ -39,9 +40,9 @@ const gradientId = 'icon-gradient-' + Math.round(Math.random() * 10e12).toString
 				y2="202"
 				gradientUnits="userSpaceOnUse"
 			>
-				<stop stop-color="var(--gradient-stop-1)" />
-				<stop offset=".5" stop-color="var(--gradient-stop-2)" />
-				<stop offset="1" stop-color="var(--gradient-stop-3)" />
+				<stop stop-color="var(--accent-light)" />
+				<stop offset=".5" stop-color="var(--accent-regular)" />
+				<stop offset="1" stop-color="var(--accent-dark)" />
 			</linearGradient>
 		)
 	}

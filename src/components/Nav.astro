@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+// import ThemeToggle from "./ThemeToggle.astro";
 import type { iconPaths } from "./IconPaths";
 
 /** Main menu items */
@@ -16,15 +16,15 @@ const iconLinks: {
 	href: string;
 	icon: keyof typeof iconPaths;
 }[] = [
-	// { label: "GitHub", href: "https://github.com/me", icon: "github-logo" },
+	{ label: "Discord", href: "https://github.com/me", icon: "discord-logo" },
+	{ label: "GitHub", href: "https://github.com/me", icon: "github-logo" },
 ];
 ---
 
 <nav data-pagefind-ignore>
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<!-- <Icon icon="terminal-window" color="var(--accent-regular)" size="1.6em" gradient /> -->
-			<img id="logo" width="60" height="60" src="/assets/logo.png" />
+			<img id="logo" width="50" height="50" src="/assets/logo.png" />
 		</a>
 		<menu-button>
 			<template>
@@ -114,9 +114,9 @@ const iconLinks: {
 				}
 			</div>
 
-			<div class="theme-toggle">
+			<!-- <div class="theme-toggle">
 				<ThemeToggle />
-			</div>
+			</div> -->
 		</div>
 	</div>
 </nav>
@@ -168,7 +168,7 @@ const iconLinks: {
 		position: relative;
 		font-family: var(--font-brand);
 		font-weight: 500;
-		margin-bottom: 3.5rem;
+		margin-bottom: 1rem;
 	}
 
 	.menu-header {
@@ -243,8 +243,16 @@ const iconLinks: {
 		text-decoration: none;
 	}
 
+	.link:hover,
+	.link:focus {
+		color: var(--gray-100);
+	}
+
 	.link.active {
-		color: var(--gray-0);
+		background: var(--gradient-accent);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
 	}
 
 	.menu-footer {
@@ -291,8 +299,12 @@ const iconLinks: {
 			display: grid;
 			grid-template-columns: 1fr auto 1fr;
 			align-items: center;
-			padding: 2.5rem 5rem;
+			padding: 1rem 3rem;
 			gap: 1rem;
+			border: 1px solid var(--gray-800);
+			border-radius: 0.75rem;
+			background-color: var(--gray-999_40);
+			box-shadow: var(--shadow-sm);
 		}
 
 		.menu-header {
@@ -310,21 +322,10 @@ const iconLinks: {
 		.nav-items {
 			position: relative;
 			flex-direction: row;
-			font-size: var(--text-sm);
-			border-radius: 999rem;
+			font-size: var(--text-base);
 			border: 0;
-			padding: 0.5rem 0.5625rem;
-			background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
-			box-shadow: var(--shadow-md);
-		}
-
-		.nav-items::before {
-			position: absolute;
-			inset: -1px;
-			content: "";
-			background: var(--gradient-stroke);
-			border-radius: 999rem;
-			z-index: -1;
+			padding: 0;
+			background-color: transparent;
 		}
 
 		.link {
@@ -333,17 +334,6 @@ const iconLinks: {
 			transition:
 				color var(--theme-transition),
 				background-color var(--theme-transition);
-		}
-
-		.link:hover,
-		.link:focus {
-			color: var(--gray-100);
-			background-color: var(--accent-subtle-overlay);
-		}
-
-		.link.active {
-			color: var(--accent-text-over);
-			background-color: var(--accent-regular);
 		}
 
 		.menu-footer {
@@ -368,6 +358,7 @@ const iconLinks: {
 			gap: 0;
 		}
 	}
+
 	@media (forced-colors: active) {
 		.link.active {
 			color: SelectedItem;

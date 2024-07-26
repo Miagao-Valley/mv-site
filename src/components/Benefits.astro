@@ -4,12 +4,7 @@ import Icon from "./Icon.astro";
 
 <section class="box benefits">
 	<div class="stack gap-2 lg:gap-4">
-		<Icon
-			icon="code"
-			color="var(--accent-regular)"
-			size="2.5rem"
-			gradient
-		/>
+		<Icon icon="code" color="white" size="2.5rem" />
 		<h2>Skills Development</h2>
 		<p>
 			Improve technical and project management benefits through through
@@ -18,25 +13,15 @@ import Icon from "./Icon.astro";
 		</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
-		<Icon
-			icon="trophy"
-			color="var(--accent-regular)"
-			size="2.5rem"
-			gradient
-		/>
+		<Icon icon="trophy" color="white" size="2.5rem" />
 		<h2>Portfolio Building</h2>
 		<p>
 			Add compelling projects to your portfolio to attract future
 			employers or clients.
 		</p>
 	</div>
-	<div class="stack gap-2 lg:gap-4">
-		<Icon
-			icon="briefcase"
-			color="var(--accent-regular)"
-			size="2.5rem"
-			gradient
-		/>
+	<div class="stack gap-2 lg:gap-4 gradient">
+		<Icon icon="briefcase" color="white" size="2.5rem" />
 		<h2>Networking Opportunities</h2>
 		<p>
 			Connect with fellow students, alumni, and mentors to gain insights
@@ -47,10 +32,10 @@ import Icon from "./Icon.astro";
 
 <style>
 	.box {
-		border: 1px solid var(--gray-800);
+		border: 0;
 		border-radius: 0.75rem;
 		padding: 1.5rem;
-		background-color: var(--gray-999_40);
+		background: var(--gradient-accent);
 		box-shadow: var(--shadow-sm);
 	}
 
@@ -62,13 +47,14 @@ import Icon from "./Icon.astro";
 
 	.benefits h2 {
 		font-size: var(--text-lg);
+		color: var(--gray-900);
 	}
 
 	.benefits p {
-		color: var(--gray-400);
+		color: var(--gray-900);
 	}
 
-	@media (min-width: 50em) {
+	@media (min-width: 53em) {
 		.box {
 			border-radius: 1.5rem;
 			padding: 2.5rem;
