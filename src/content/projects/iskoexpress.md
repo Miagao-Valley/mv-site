@@ -1,5 +1,5 @@
 ---
-title: iskoexpress
+title: IskoXpress
 startDate: 2024-06-30 00:00:00
 img:
   - /assets/stock-4.jpg
@@ -7,28 +7,17 @@ img:
   - /assets/stock-1.jpg
 img_alt: Soft pink and baby blue water ripples together in a subtle texture.
 description: |
-  We developed brand positioning and design assets for the launch
-  of a new colored water product.
+  A social platform for UPV students to exchange and express their thoughts.
 tags:
-  - webdev
-  - react
-  - tailwind
-  - firebase
+  - React.js
+  - Tailwind CSS
+  - Firebase 
 git_link: https://github.com/Miagao-Valley/
 yt_link: https://www.youtube.com/
 ---
 
-## Level-two heading
+## IskoXpress
 
-> Insert a quote or highlight
+IskoXpress is a social media platform tailored specifically for students of the University of the Philippines Visayas (UPV). It provides a vibrant space for students to share their thoughts, engage in meaningful discussions, and connect with their peers. By fostering an environment of open communication and idea exchange, IskoXpress aims to enhance the sense of community within UPV, encouraging students to express their opinions, share academic insights, and collaborate on various projects.
 
-Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
 
-### Level-three heading
-
-Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel quam elementum pulvinar etiam non.
-
-#### Level-four heading
-
-- We noted this
-- And also this other point
