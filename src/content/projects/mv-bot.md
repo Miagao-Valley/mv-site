@@ -1,7 +1,8 @@
 ---
 title: mv-bot
 startDate: 2020-06-28 00:00:00
-img: /src/assets/projects/mv-bot.png
+img: 
+  - /src/assets/projects/mv-bot.png
 img_alt: Miagao Valley Bot
 description: |
   Automation of tasks in Miagao Valley.

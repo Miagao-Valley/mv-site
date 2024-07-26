@@ -9,7 +9,6 @@ import CallToAction from "../components/CallToAction.astro";
 import Grid from "../components/Grid.astro";
 import Hero from "../components/Hero.astro";
 import Icon from "../components/Icon.astro";
-import Pill from "../components/Pill.astro";
 
 // import Pill from "../components/Pill.astro";
 import PortfolioPreview from "../components/PortfolioPreview.astro";
@@ -19,27 +18,32 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Langauages from "../components/Langauages.astro";
 import Statistics from "../components/Statistics.astro";
 import Benefits from "../components/Benefits.astro";
+import { Image } from "astro:assets";
 
 // Content Fetching: List four most recent projects
+import logo from "../assets/logo.png";
+
 const projects = (await getCollection("projects"))
 	.sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf())
 	.slice(0, 4);
 ---
 
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48" data-pagefind-ignore>
+	<div class="stack gap-20 lg:gap-30" data-pagefind-ignore>
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
-				<Hero
-					title="Miagao Valley"
-					tagline="We’re an open-source community led by Computer Science students at the University of the Philippines Visayas."
-					align="start"
-					color="white"
-				>
-				</Hero>
-
+				<div class="hero-text">
+					<Hero
+						title="Miagao Valley"
+						tagline="We’re an open-source community led by Computer Science students at the University of the Philippines Visayas."
+						align="start"
+						color="white"
+					/>
+				</div>
 			</header>
-			
+		</div>
+
+		<main class="wrapper stack gap-20 lg:gap-30">
 			<section class="section with-background left">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Community in Numbers</h3>
@@ -49,10 +53,6 @@ const projects = (await getCollection("projects"))
 					<Statistics />
 				</div>
 			</section>
-		</div>
-
-		<main class="wrapper stack gap-10 lg:gap-30">
-			
 
 			<section class="section with-background">
 				<header class="section-header stack gap-2 lg:gap-4">
@@ -123,41 +123,44 @@ const projects = (await getCollection("projects"))
 
 		border: 0;
 		border-radius: 0.75rem;
-		padding: 5rem;
 		box-shadow: var(--shadow-sm);
 		color: white;
+		padding: 5rem;
 	}
 
 	.roles {
 		display: none;
 	}
 
-	.hero img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-		object-position: top;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
+	/* .hero-img {
+		display: none;
+	} */
 
 	@media (min-width: 50em) {
 		.hero {
 			display: grid;
 			grid-template-columns: 6fr 4fr;
-			padding: 5rem;
-			gap: 3.75rem;
+			grid-template-rows: 0.5fr 1fr;
+			height: 30rem;
+			padding: 0;
+			gap: 0;
+		}
+
+		.hero-text {
+			grid-area: 2 / 1 / 3 / 2;
+			padding: 0 0 5rem 5rem;
+		}
+
+		.hero img {
+			grid-area: 1 / 2 / 3 / 3;
+			object-fit: cover;
+			height: 500px;
 		}
 
 		.roles {
 			margin-top: 0.5rem;
 			display: flex;
 			gap: 0.5rem;
-		}
-
-		.hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
 		}
 	}
 
@@ -280,6 +283,8 @@ const projects = (await getCollection("projects"))
 			height: 9.5rem;
 		}
 	}
+
+	/* ====================================================== */
 
 	.hero {
 		background: linear-gradient(270deg, #67007d, #3e007d, #92d5da);
