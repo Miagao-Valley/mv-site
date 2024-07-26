@@ -31,7 +31,7 @@ const projects = (await getCollection("projects"))
 <BaseLayout>
 	<div class="stack gap-20 lg:gap-30" data-pagefind-ignore>
 		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero">
+			<header class="hero box">
 				<div class="hero-text">
 					<Hero
 						title="Miagao Valley"
@@ -93,7 +93,9 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<section class="section with-background bg-variant">
+			<section
+				class="section with-background bg-variant left box transparent"
+			>
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Languages Used</h3>
 					<p>
@@ -115,15 +117,18 @@ const projects = (await getCollection("projects"))
 </BaseLayout>
 
 <style>
+	.box {
+		border: 0;
+		border-radius: 0.75rem;
+		box-shadow: var(--shadow-sm);
+	}
+
 	.hero {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
 
-		border: 0;
-		border-radius: 0.75rem;
-		box-shadow: var(--shadow-sm);
 		color: white;
 		padding: 5rem;
 	}
@@ -131,10 +136,6 @@ const projects = (await getCollection("projects"))
 	.roles {
 		display: none;
 	}
-
-	/* .hero-img {
-		display: none;
-	} */
 
 	@media (min-width: 50em) {
 		.hero {
@@ -169,6 +170,17 @@ const projects = (await getCollection("projects"))
 	.section {
 		display: grid;
 		gap: 2rem;
+	}
+
+	.transparent {
+		border: 1px solid var(--gray-800);
+		background-color: var(--gray-999_40);
+		padding: 2.5rem;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 5rem;
 	}
 
 	.with-background {
@@ -241,11 +253,13 @@ const projects = (await getCollection("projects"))
 			font-size: var(--text-4xl);
 		}
 
-		.left h3 {
+		.left h3,
+		.left p {
 			text-align: left;
 		}
 
-		.right h3 {
+		.right h3,
+		.right p {
 			text-align: right;
 		}
 
