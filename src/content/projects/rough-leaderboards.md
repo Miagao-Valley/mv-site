@@ -3,6 +3,7 @@ title: rough leaderboards
 startDate: 2024-07-12 00:00:00
 img:
   - /assets/stock-1.jpg
+  - /assets/backgrounds/bg-subtle-2-light-1440w.jpg
   - /assets/stock-3.jpg
   - /assets/stock-2.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
