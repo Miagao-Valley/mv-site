@@ -44,7 +44,7 @@ const projects = (await getCollection("projects"))
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-30">
-			<section class="section with-background left">
+			<section class="section left">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Community in Numbers</h3>
 				</header>
@@ -54,7 +54,7 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<section class="section with-background">
+			<section class="section">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Why Join Us?</h3>
 				</header>
@@ -64,7 +64,7 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<section class="section with-background with-cta">
+			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Projects</h3>
 					<p>
@@ -93,9 +93,7 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<section
-				class="section with-background bg-variant left box transparent"
-			>
+			<section class="section bg-variant left box transparent">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Languages Used</h3>
 					<p>
@@ -167,48 +165,15 @@ const projects = (await getCollection("projects"))
 
 	/* ====================================================== */
 
-	.section {
-		display: grid;
-		gap: 2rem;
-	}
-
 	.transparent {
 		border: 1px solid var(--gray-800);
 		background-color: var(--gray-999_40);
 		padding: 2.5rem;
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		justify-content: center;
-		gap: 5rem;
 	}
 
-	.with-background {
-		position: relative;
-	}
-
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
-
-		content: "";
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url("/assets/backgrounds/noise.png") top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
-
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
+	.section {
+		display: grid;
+		gap: 2rem;
 	}
 
 	.section-header {
@@ -277,6 +242,16 @@ const projects = (await getCollection("projects"))
 		}
 	}
 
+	@media (min-width: 55em) {
+		.transparent {
+			grid-template-columns: 0.5fr 0.5fr 1fr 1fr;
+			grid-template-areas: "header header gallery gallery";
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+
 	/* ====================================================== */
 
 	.mention-card {
@@ -304,9 +279,9 @@ const projects = (await getCollection("projects"))
 		background: linear-gradient(270deg, #67007d, #3e007d, #92d5da);
 		background-size: 600% 600%;
 
-		-webkit-animation: GradientAnimation 30s ease infinite;
-		-moz-animation: GradientAnimation 30s ease infinite;
-		animation: GradientAnimation 30s ease infinite;
+		-webkit-animation: GradientAnimation 20s ease infinite;
+		-moz-animation: GradientAnimation 20s ease infinite;
+		animation: GradientAnimation 20s ease infinite;
 	}
 
 	@-webkit-keyframes GradientAnimation {
