@@ -1,0 +1,129 @@
+---
+import Icon from "../components/Icon.astro";
+
+interface Props {
+  href: string[];
+}
+
+const { href } = Astro.props;
+---
+
+<section aria-label="photo-carousel">
+  <div class="carousel">
+    <button class="carousel-button prev" id="prev">
+      <Icon icon="arrow-left" />
+    </button>
+    <button class="carousel-button next" id="next">
+      <Icon icon="arrow-right" />
+    </button>
+    <ul>
+      {
+        href.map((source) => (
+          <li class="slide active">
+            <img src={source} alt="" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const slidesLength = slides.length;
+  let currentSlide = 0;
+  console.log(slidesLength);
+  updateCarousel();
+
+  const prevButton = document.getElementById("prev");
+  const nextButton = document.getElementById("next");
+
+  if (prevButton && nextButton) {
+    nextButton.addEventListener("click", () => {
+      console.log("Next");
+      goToNextSlide();
+    });
+
+    prevButton.addEventListener("click", () => {
+      console.log("Prev");
+      goToPreviousSlide();
+    });
+  } else {
+    console.error("Buttons not found.");
+  }
+
+  // Get dynamic length
+  function goToPreviousSlide() {
+    currentSlide = currentSlide === 0 ? slidesLength - 1 : currentSlide - 1;
+    updateCarousel();
+  }
+
+  function goToNextSlide() {
+    currentSlide = currentSlide === slidesLength - 1 ? 0 : currentSlide + 1;
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    slides.forEach((slide, index) => {
+      if (index === currentSlide) {
+        slide.classList.add("active");
+      } else {
+        slide.classList.remove("active");
+      }
+    });
+  }
+</script>
+<style>
+  .carousel {
+    position: relative;
+  }
+
+  .carousel-button {
+    display: flex;
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 3em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-400);
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0 0.25em;
+  }
+
+  .carousel-button:hover,
+  .carousel-button:focus {
+    color: var(--gray-100);
+  }
+
+  .carousel-button.prev {
+    left: 0.5rem;
+  }
+
+  .carousel-button.next {
+    right: 0.5rem;
+  }
+
+  .carousel > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .slide {
+    display: none;
+  }
+
+  .slide.active {
+    display: block;
+  }
+
+  .slide > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+</style>

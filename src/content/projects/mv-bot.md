@@ -1,7 +1,8 @@
 ---
 title: mv-bot
 startDate: 2020-06-28 00:00:00
-img: /assets/mv-bot.jpg
+img:
+  - /assets/mv-bot.jpg
 img_alt: Miagao Valley Bot
 description: |
   Automation of tasks in Miagao Valley.
@@ -9,6 +10,8 @@ tags:
   - Express.js
   - EJS
   - Octokit
+git_link: https://github.com/Miagao-Valley/
+yt_link: https://www.youtube.com/
 ---
 
 ### Miagao Valley Bot
@@ -22,3 +25,4 @@ Miagao Valley Bot (**mv-bot**) handles the automation of administrative and repe
 #### Web Pages
 
 mv-bot also serves pages to users, and administrators. Pages includes the static pages for the GitHub organization/project invites, administrative functions such as the creation of channels/repositories, etc. 
+
