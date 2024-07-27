@@ -2,9 +2,7 @@
 title: sqdle
 startDate: 2024-07-16 00:00:00
 img:
-  - /assets/stock-3.jpg
-  - /assets/stock-2.jpg
-  - /assets/stock-1.jpg
+  - /assets/projects/sqdle.png
 img_alt: sqdle
 description: |
   Daily SQL challenges
