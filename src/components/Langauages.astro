@@ -1,8 +1,6 @@
----
-import Grid from "./Grid.astro";
----
-
-<Grid variant="small" id="languages" />
+<div class="languages-container">
+    <div id="languages" style="width: 400px;"></div>
+</div>
 
 <script>
     import { Chart } from "chart.js/auto";
@@ -19,25 +17,15 @@ import Grid from "./Grid.astro";
         values.push(lang.value);
     });
 
-    const container = document.querySelector("#languages.grid")!;
+    const container = document.querySelector("#languages")!;
 
     Chart.defaults.font.family = "Public Sans";
     Chart.defaults.font.size = 14;
+    // Chart.overrides["pie"].plugins.legend.position = "right";
 
     function renderChart(label: string[], values: number[]) {
-        const li = document.createElement("li");
-        li.style.display = "flex";
-        li.style.justifyContent = "center";
-
-        const chartContainer = document.createElement("div");
-        chartContainer.style.width = "400px";
-
         const canvas = document.createElement("canvas");
-        canvas.id = label;
-
-        chartContainer.appendChild(canvas);
-        li.appendChild(chartContainer);
-        container.appendChild(li);
+        container.appendChild(canvas);
 
         const dataset = {
             labels: label,
@@ -54,10 +42,6 @@ import Grid from "./Grid.astro";
         const chart = new Chart(canvas, {
             type: "pie",
             data: dataset,
-            options: {
-                animations: { animateScale: "false" },
-                responsive: "true",
-            },
         });
 
         return chart;
@@ -65,3 +49,13 @@ import Grid from "./Grid.astro";
 
     renderChart(langs, values);
 </script>
+
+<style>
+    .languages-container {
+        border-radius: 0.75rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--gray-800);
+        background-color: var(--gray-999_40);
+        padding: 2.5rem;
+    }
+</style>

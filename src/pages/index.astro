@@ -21,8 +21,6 @@ import Benefits from "../components/Benefits.astro";
 import { Image } from "astro:assets";
 
 // Content Fetching: List four most recent projects
-import logo from "../assets/logo.png";
-
 const projects = (await getCollection("projects"))
 	.sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf())
 	.slice(0, 4);
@@ -31,13 +29,14 @@ const projects = (await getCollection("projects"))
 <BaseLayout>
 	<div class="stack gap-20 lg:gap-30" data-pagefind-ignore>
 		<div class="wrapper stack gap-8 lg:gap-20">
-			<header class="hero box">
+			<header class="hero">
 				<div class="hero-text">
 					<Hero
 						title="Miagao Valley"
 						tagline="We’re an open-source community led by Computer Science students at the University of the Philippines Visayas."
 						align="start"
 						color="white"
+						gradient=""
 					/>
 				</div>
 			</header>
@@ -93,7 +92,7 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<section class="section bg-variant left box transparent">
+			<section class="section bg-variant languages">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Languages Used</h3>
 					<p>
@@ -115,12 +114,6 @@ const projects = (await getCollection("projects"))
 </BaseLayout>
 
 <style>
-	.box {
-		border: 0;
-		border-radius: 0.75rem;
-		box-shadow: var(--shadow-sm);
-	}
-
 	.hero {
 		display: flex;
 		flex-direction: column;
@@ -129,6 +122,10 @@ const projects = (await getCollection("projects"))
 
 		color: white;
 		padding: 5rem;
+
+		border: 0;
+		border-radius: 0.75rem;
+		box-shadow: var(--shadow-sm);
 	}
 
 	.roles {
@@ -141,13 +138,11 @@ const projects = (await getCollection("projects"))
 			grid-template-columns: 6fr 4fr;
 			grid-template-rows: 0.5fr 1fr;
 			height: 30rem;
-			padding: 0;
 			gap: 0;
 		}
 
 		.hero-text {
 			grid-area: 2 / 1 / 3 / 2;
-			padding: 0 0 5rem 5rem;
 		}
 
 		.hero img {
@@ -165,10 +160,9 @@ const projects = (await getCollection("projects"))
 
 	/* ====================================================== */
 
-	.transparent {
-		border: 1px solid var(--gray-800);
-		background-color: var(--gray-999_40);
-		padding: 2.5rem;
+	.languages {
+		align-items: center;
+		justify-items: center;
 	}
 
 	.section {
@@ -196,17 +190,19 @@ const projects = (await getCollection("projects"))
 		}
 
 		.section.left {
-			grid-template-columns: 0.5fr 0.5fr 1fr 1fr;
-			grid-template-areas: "header header gallery gallery";
+			grid-template-areas: "header gallery gallery gallery";
 		}
 
 		.section.right {
-			grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
-			grid-template-areas: "gallery gallery header header";
+			grid-template-areas: "gallery gallery gallery header";
 		}
 
 		.section.with-cta {
 			grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
+		}
+
+		.section.languages {
+			grid-template-areas: "header header header gallery";
 		}
 
 		.section-header {
@@ -219,7 +215,9 @@ const projects = (await getCollection("projects"))
 		}
 
 		.left h3,
-		.left p {
+		.left p,
+		.languages h3,
+		.languages p {
 			text-align: left;
 		}
 
@@ -239,16 +237,6 @@ const projects = (await getCollection("projects"))
 
 		.cta {
 			grid-area: cta;
-		}
-	}
-
-	@media (min-width: 55em) {
-		.transparent {
-			grid-template-columns: 0.5fr 0.5fr 1fr 1fr;
-			grid-template-areas: "header header gallery gallery";
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
 		}
 	}
 
