@@ -10,7 +10,7 @@ tags:
   - Express.js
   - EJS
   - Octokit
-git_link: https://github.com/Miagao-Valley/
+git_link: https://github.com/Miagao-Valley/mv-bot
 yt_link: https://www.youtube.com/
 ---
 

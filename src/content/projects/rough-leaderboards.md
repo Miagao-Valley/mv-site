@@ -2,10 +2,9 @@
 title: rough leaderboards
 startDate: 2024-07-12 00:00:00
 img:
-  - /assets/stock-1.jpg
-  - /assets/backgrounds/bg-subtle-2-light-1440w.jpg
-  - /assets/stock-3.jpg
-  - /assets/stock-2.jpg
+  - /src/assets/projects/stock-1.jpg
+  - /src/assets/projects/stock-3.jpg
+  - /src/assets/projects/stock-2.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
@@ -13,7 +12,7 @@ tags:
   - java
   - mod
   - fabric
-git_link: https://github.com/Miagao-Valley/
+git_link: https://github.com/Miagao-Valley/Rough-Leaderboards
 yt_link: https://www.youtube.com/
 ---
 

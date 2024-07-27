@@ -2,10 +2,10 @@
 title: iskoexpress
 startDate: 2024-06-30 00:00:00
 img:
-  - /assets/stock-4.jpg
-  - /assets/stock-3.jpg
-  - /assets/stock-1.jpg
-img_alt: Soft pink and baby blue water ripples together in a subtle texture.
+  - /src/assets/projects/stock-4.jpg
+  - /src/assets/projects/stock-3.jpg
+  - /src/assets/projects/stock-1.jpg
+img_alt: iskoexpress
 description: |
   We developed brand positioning and design assets for the launch
   of a new colored water product.
@@ -14,7 +14,7 @@ tags:
   - react
   - tailwind
   - firebase
-git_link: https://github.com/Miagao-Valley/
+git_link: https://github.com/Miagao-Valley/iskoxpress
 yt_link: https://www.youtube.com/
 ---
 
