@@ -5,29 +5,23 @@ img:
   - /assets/stock-3.jpg
   - /assets/stock-2.jpg
   - /assets/stock-1.jpg
-img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+img_alt: sqdle
 description: |
-  We developed a virtual showcase for the softest bedding imaginable.
+  Daily SQL challenges
 tags:
-  - react
-  - firebase
+  - React
+  - Firebase
   - sql.js
   - CRACO
-git_link: https://github.com/Miagao-Valley/
+  - OpenAI
+git_link: https://github.com/Miagao-Valley/sqdle
 yt_link: https://www.youtube.com/
 ---
 
-## Level-two heading
+### Sqdle
 
-> Insert a quote or highlight
+Sqdle is an exciting new game targeted for people learning SQL. Inspired by Wordle, SQDLE offers daily SQL challenges generated using OpenAI. You get to run SQL statements directly in your browser with sql.js (powered by **SQLite3**).
 
-Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+##### How it works
 
-### Level-three heading
-
-Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel quam elementum pulvinar etiam non.
-
-#### Level-four heading
-
-- We noted this
-- And also this other point
+Each puzzle presents you with multiple tables filled with sample data, such as `employees`, `departments`, and `projects`. Your objective is to write an SQL query that matches the provided `target` table. Enter your SQL statements and see if they produce the expected result. Sqdle will let you know if your query matches the expected result. If it does, you win the puzzle!
