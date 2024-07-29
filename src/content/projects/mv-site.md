@@ -2,32 +2,28 @@
 title: mv-site
 startDate: 2024-06-30 00:00:00
 img:
-  - /src/assets/projects/stock-3.jpg
-  - /src/assets/projects/stock-1.jpg
-  - /src/assets/projects/stock-2.jpg
-img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
+  - /src/assets/projects/mv-site.jpg
+img_alt: mv-site
 description: |
-  We developed a virtual showcase for the softest bedding imaginable.
+  A website dedicated to Miagao Valley.
 tags:
-  - webdev
-  - astro
-  - typescript
+  - Webdev
+  - Astro
+  - Typescript
   - CSS
 git_link: https://github.com/Miagao-Valley/mv-site
-link: https://miagaovalley.site/
+link: ""
 ---
 
-## Level-two heading
+# Miagao Valley Site
 
-> Insert a quote or highlight
+Welcome to <a href="https://miagaovalley.site/" target="_blank">mv-site</a>, a place for showcasing projects and staying updated on community events. 
 
-Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+### Status
 
-### Level-three heading
+This is an ongoing project that continuously evolves to better serve the community. If you're interested in contributing, feel free to <a href="https://github.com/Miagao-Valley/mv-site" target="_blank">join us</a>.
 
-Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel quam elementum pulvinar etiam non.
+### Implementation
 
-#### Level-four heading
+The website is built using Astro, a modern static site generator, CSS for custom styles, and other JavaScript libraries to enhance functionality and user interactivity.
 
-- We noted this
-- And also this other point
