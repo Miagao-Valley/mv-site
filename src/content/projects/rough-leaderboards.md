@@ -13,7 +13,7 @@ tags:
   - Mod
   - Fabric
 git_link: https://github.com/Miagao-Valley/Rough-Leaderboards
-yt_link: https://www.youtube.com/
+link: https://www.youtube.com/
 ---
 
 # Rough Leaderboards

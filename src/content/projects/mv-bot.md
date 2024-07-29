@@ -11,7 +11,7 @@ tags:
   - EJS
   - Octokit
 git_link: https://github.com/Miagao-Valley/mv-bot
-yt_link: https://www.youtube.com/
+link: https://www.youtube.com/
 ---
 
 ### Miagao Valley Bot

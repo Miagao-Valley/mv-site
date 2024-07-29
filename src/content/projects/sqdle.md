@@ -13,7 +13,7 @@ tags:
   - CRACO
   - OpenAI
 git_link: https://github.com/Miagao-Valley/sqdle
-yt_link: https://www.youtube.com/
+link: https://sqdle.netlify.app/
 ---
 
 ### Sqdle

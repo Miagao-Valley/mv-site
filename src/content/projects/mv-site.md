@@ -14,7 +14,7 @@ tags:
   - typescript
   - CSS
 git_link: https://github.com/Miagao-Valley/mv-site
-yt_link: https://www.youtube.com/
+link: https://miagaovalley.site/
 ---
 
 ## Level-two heading

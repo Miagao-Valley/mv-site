@@ -14,7 +14,7 @@ tags:
   - Tailwind
   - Firebase
 git_link: https://github.com/Miagao-Valley/iskoxpress
-yt_link: https://www.youtube.com/
+link: https://www.youtube.com/
 ---
 
 ## IskoXpress
