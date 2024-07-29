@@ -8,7 +8,7 @@ img:
   - /assets/stock-2.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
-  We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
+  A Fabric Minecraft leaderboard mod
 tags:
   - java
   - mod
