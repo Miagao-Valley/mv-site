@@ -11,7 +11,7 @@ export const collections = {
 			img: z.array(z.string()),
 			img_alt: z.string().optional(),
 			git_link: z.string().optional(),
-			yt_link: z.string().optional(),
+			link: z.string().optional(),
 		}),
 	}),
 };

@@ -14,10 +14,10 @@ tags:
   - Tailwind
   - Firebase
 git_link: https://github.com/Miagao-Valley/iskoxpress
-yt_link: https://www.youtube.com/
+link: ""
 ---
 
-## IskoXpress
+# IskoXpress
 
 IskoXpress is a social media platform tailored specifically for students of the University of the Philippines Visayas (UPV). It provides a vibrant space for students to share their thoughts, engage in meaningful discussions, and connect with their peers. By fostering an environment of open communication and idea exchange, IskoXpress aims to enhance the sense of community within UPV, encouraging students to express their opinions, share academic insights, and collaborate on various projects.
 

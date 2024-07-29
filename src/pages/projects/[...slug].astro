@@ -43,7 +43,10 @@ const { Content } = await entry.render();
               </div>
               <p class="description">{entry.data.description}</p>
               <div class="links">
-                <a class="description" href={entry.data.git_link}
+                <a
+                  class="description"
+                  href={entry.data.git_link}
+                  target="_blank"
                   ><Icon
                     icon="github-logo"
                     size="2em"
@@ -51,12 +54,8 @@ const { Content } = await entry.render();
                   /></a
                 >
 
-                <a class="description" href={entry.data.yt_link}
-                  ><Icon
-                    icon="youtube-logo"
-                    size="2em"
-                    color="var(--gray-200)"
-                  /></a
+                <a class="description" href={entry.data.link} target="_blank"
+                  ><Icon icon="link" size="2em" color="var(--gray-200)" /></a
                 >
               </div>
             </div>

@@ -8,20 +8,26 @@
     {
         "imagePath": "/src/assets/members/mabait.jpeg",
         "name": "Rian Mabait",
-        "githubLink": "https://github.com/ezerssss",
-        "linkedInLink": "https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+        "githubLink": "",
+        "linkedInLink": ""
     },
     {
         "imagePath": "/src/assets/members/placeholder.jpg",
         "name": "Paige Aguirre",
-        "githubLink": "https://github.com/ezerssss",
-        "linkedInLink": "https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+        "githubLink": "",
+        "linkedInLink": ""
     },
     {
         "imagePath": "/src/assets/members/placeholder.jpg",
         "name": "Aimee Bayle",
-        "githubLink": "https://github.com/ezerssss",
-        "linkedInLink": "https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+        "githubLink": "",
+        "linkedInLink": ""
+    },
+    {
+        "imagePath": "/src/assets/members/placeholder.jpg",
+        "name": "Andry Tumacole",
+        "githubLink": "",
+        "linkedInLink": ""
     },
     {
         "imagePath": "/src/assets/members/talisay.JPG",
@@ -38,7 +44,7 @@
     {
         "imagePath": "/src/assets/members/placeholder.jpg",
         "name": "Yvonne Lin",
-        "githubLink": "https://github.com/ezerssss",
-        "linkedInLink": "https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+        "githubLink": "",
+        "linkedInLink": ""
     }
 ]
