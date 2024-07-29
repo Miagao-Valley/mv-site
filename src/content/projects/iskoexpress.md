@@ -10,10 +10,10 @@ description: |
   We developed brand positioning and design assets for the launch
   of a new colored water product.
 tags:
-  - webdev
-  - react
-  - tailwind
-  - firebase
+  - Webdev
+  - React
+  - Tailwind
+  - Firebase
 git_link: https://github.com/Miagao-Valley/iskoxpress
 yt_link: https://www.youtube.com/
 ---

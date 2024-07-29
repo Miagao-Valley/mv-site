@@ -9,9 +9,9 @@ img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   We designed a whodunnit-style game to introduce Markdown formatting. Suspense — suspicion — syntax!
 tags:
-  - java
-  - mod
-  - fabric
+  - Java
+  - Mod
+  - Fabric
 git_link: https://github.com/Miagao-Valley/Rough-Leaderboards
 yt_link: https://www.youtube.com/
 ---
