@@ -1,8 +1,8 @@
 ---
 title: mv-bot
 startDate: 2020-06-28 00:00:00
-img:
-  - /assets/mv-bot.jpg
+img: 
+  - /src/assets/projects/mv-bot.png
 img_alt: Miagao Valley Bot
 description: |
   Automation of tasks in Miagao Valley.
@@ -10,7 +10,7 @@ tags:
   - Express.js
   - EJS
   - Octokit
-git_link: https://github.com/Miagao-Valley/
+git_link: https://github.com/Miagao-Valley/mv-bot
 yt_link: https://www.youtube.com/
 ---
 

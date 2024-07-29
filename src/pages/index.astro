@@ -21,39 +21,48 @@ import Benefits from "../components/Benefits.astro";
 
 // Content Fetching: List four most recent projects
 const projects = (await getCollection("projects"))
-	.sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf())
+	.sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf())
 	.slice(0, 4);
 ---
 
 <BaseLayout>
-	<div class="stack gap-20 lg:gap-48" data-pagefind-ignore>
+	<div class="stack gap-20 lg:gap-30" data-pagefind-ignore>
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
-				<Hero
-					title="Miagao Valley"
-					tagline="We’re an open-source community led by Computer Science students at the University of the Philippines Visayas."
-					align="center"
-				>
-					<!-- <div class="roles">
-						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
-					</div> -->
-				</Hero>
-
-				<!-- <img
-					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
-					width="480"
-					height="620"
-					src="/assets/portrait.jpg"
-				/> -->
+				<div class="hero-text">
+					<Hero
+						title="Miagao Valley"
+						tagline="We’re an open-source community led by Computer Science students at the University of the Philippines Visayas."
+						align="start"
+						color="white"
+						gradient=""
+					/>
+				</div>
 			</header>
-
-			<Benefits />
 		</div>
 
-		<main class="wrapper stack gap-20 lg:gap-48">
-			<section class="section with-background with-cta">
+		<main class="wrapper stack gap-20 lg:gap-30">
+			<section class="section left">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Our Community in Numbers</h3>
+				</header>
+
+				<div class="gallery">
+					<Statistics />
+				</div>
+			</section>
+
+			<section class="section">
+				<header class="section-header stack gap-2 lg:gap-4">
+					<h3>Why Join Us?</h3>
+				</header>
+
+				<div class="gallery">
+					<Benefits />
+				</div>
+			</section>
+
+			<section class="section with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Projects</h3>
 					<p>
@@ -82,9 +91,7 @@ const projects = (await getCollection("projects"))
 				</div>
 			</section>
 
-			<Statistics />
-
-			<section class="section with-background bg-variant">
+			<section class="section bg-variant languages">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Languages Used</h3>
 					<p>
@@ -111,26 +118,36 @@ const projects = (await getCollection("projects"))
 		flex-direction: column;
 		align-items: center;
 		gap: 2rem;
+
+		color: white;
+		padding: 5rem;
+
+		border: 0;
+		border-radius: 0.75rem;
+		box-shadow: var(--shadow-sm);
 	}
 
 	.roles {
 		display: none;
 	}
 
-	.hero img {
-		aspect-ratio: 5 / 4;
-		object-fit: cover;
-		object-position: top;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
-
-	@media (min-width: 50em) {
+	@media (min-width: 60em) {
 		.hero {
 			display: grid;
-			/* grid-template-columns: 6fr 4fr; */
-			padding-inline: 2.5rem;
-			gap: 3.75rem;
+			grid-template-columns: 6fr 4fr;
+			grid-template-rows: 0.5fr 1fr;
+			height: 30rem;
+			gap: 0;
+		}
+
+		.hero-text {
+			grid-area: 2 / 1 / 3 / 2;
+		}
+
+		.hero img {
+			grid-area: 1 / 2 / 3 / 3;
+			object-fit: cover;
+			height: 500px;
 		}
 
 		.roles {
@@ -138,47 +155,18 @@ const projects = (await getCollection("projects"))
 			display: flex;
 			gap: 0.5rem;
 		}
-
-		.hero img {
-			aspect-ratio: 3 / 4;
-			border-radius: 4.5rem;
-			object-fit: cover;
-		}
 	}
 
 	/* ====================================================== */
 
+	.languages {
+		align-items: center;
+		justify-items: center;
+	}
+
 	.section {
 		display: grid;
 		gap: 2rem;
-	}
-
-	.with-background {
-		position: relative;
-	}
-
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
-
-		content: "";
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url("/assets/backgrounds/noise.png") top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
-
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
 	}
 
 	.section-header {
@@ -200,6 +188,14 @@ const projects = (await getCollection("projects"))
 			gap: 5rem;
 		}
 
+		.section.left {
+			grid-template-areas: "header gallery gallery gallery";
+		}
+
+		.section.right {
+			grid-template-areas: "gallery gallery gallery header";
+		}
+
 		.section.with-cta {
 			grid-template-areas: "header header header cta" "gallery gallery gallery gallery";
 		}
@@ -211,6 +207,16 @@ const projects = (await getCollection("projects"))
 
 		.section-header h3 {
 			font-size: var(--text-4xl);
+		}
+
+		.left h3,
+		.left p {
+			text-align: left;
+		}
+
+		.right h3,
+		.right p {
+			text-align: right;
 		}
 
 		.with-cta .section-header {
@@ -227,6 +233,16 @@ const projects = (await getCollection("projects"))
 		}
 	}
 
+	@media (min-width: 60em) {
+		.section.languages {
+			grid-template-areas: "header header header gallery";
+		}
+
+		.languages h3,
+		.languages p {
+			text-align: left;
+		}
+	}
 	/* ====================================================== */
 
 	.mention-card {
@@ -245,6 +261,53 @@ const projects = (await getCollection("projects"))
 		.mention-card {
 			border-radius: 1.5rem;
 			height: 9.5rem;
+		}
+	}
+
+	/* ====================================================== */
+
+	.hero {
+		background: linear-gradient(270deg, #67007d, #3e007d, #92d5da);
+		background-size: 600% 600%;
+
+		-webkit-animation: GradientAnimation 20s ease infinite;
+		-moz-animation: GradientAnimation 20s ease infinite;
+		animation: GradientAnimation 20s ease infinite;
+	}
+
+	@-webkit-keyframes GradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@-moz-keyframes GradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes GradientAnimation {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
 		}
 	}
 </style>

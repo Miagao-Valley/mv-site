@@ -2,15 +2,25 @@
 interface Props {
 	title: string;
 	tagline?: string;
-	align?: 'start' | 'center';
+	color?: string;
+	align?: "start" | "center";
+	gradient?: "" | "gradient";
 }
 
-const { align = 'center', tagline, title } = Astro.props;
+const {
+	align = "center",
+	tagline,
+	title,
+	color = "transparent",
+	gradient = "gradient",
+} = Astro.props;
 ---
 
-<div class:list={['hero stack gap-4', align]}>
+<div class:list={["hero stack gap-4", align]}>
 	<div class="stack gap-2">
-		<h1 class="title">{title}</h1>
+		<h1 style=`color: ${color};` class=`title ${gradient}`>
+			{title}
+		</h1>
 		{tagline && <p class="tagline">{tagline}</p>}
 	</div>
 	<slot />
@@ -20,6 +30,7 @@ const { align = 'center', tagline, title } = Astro.props;
 	.hero {
 		font-size: var(--text-lg);
 		text-align: center;
+		margin-top: 1rem;
 	}
 
 	.title,
@@ -29,13 +40,24 @@ const { align = 'center', tagline, title } = Astro.props;
 	}
 
 	.title {
-		font-size: var(--text-3xl);
+		font-size: var(--text-4xl);
 		color: var(--gray-0);
 	}
 
-	@media (min-width: 50em) {
+	.gradient {
+		background: linear-gradient(
+			150deg,
+			var(--gradient-stop-1),
+			var(--gradient-stop-2),
+			var(--gradient-stop-3)
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+	}
+
+	@media (min-width: 60em) {
 		.hero {
-			font-size: var(--text-xl);
+			font-size: var(--text-lg);
 		}
 
 		.start {

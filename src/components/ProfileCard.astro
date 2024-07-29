@@ -13,12 +13,12 @@ interface Props {
 
 const { imagePath, name, githubLink, linkedInLink } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-    "/src/assets/*.{jpeg,jpg,png,gif}",
+    "/src/assets/members/*.{jpeg,jpg,png,gif,JPG}",
 );
 
 if (!images[imagePath]) {
     throw new Error(
-        `${imagePath}} does not exist in glob: "/src/assets/*.{jpeg,jpg,png,gif}"`,
+        `${imagePath}} does not exist in glob: "/src/assets/members/*.{jpeg,jpg,png,gif,JPG}"`,
     );
 }
 

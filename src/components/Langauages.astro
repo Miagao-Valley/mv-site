@@ -1,90 +1,61 @@
----
-import Grid from "./Grid.astro";
----
-
-<Grid variant="small" id="languages" />
+<div class="languages-container">
+    <div id="languages" style="width: 400px;"></div>
+</div>
 
 <script>
     import { Chart } from "chart.js/auto";
-    import {
-        languages,
-        totalLangUsage,
-    } from "../content/data/githubStats.js";
+    import { languages } from "../content/data/githubStats.js";
+    import { colors } from "../content/data/colors.js";
 
-    const container = document.querySelector("#languages.grid")!;
+    const langs: string[] = [];
+    languages.forEach((lang) => {
+        langs.push(lang.name);
+    });
 
-    const colors = {
-        accentLight: "#c561f6",
-        accentDark: "#1c0056",
-        gray900: "#f3f4f7",
-        gray999: "#ffffff",
-    };
+    const values: number[] = [];
+    languages.forEach((lang) => {
+        values.push(lang.value);
+    });
+
+    const container = document.querySelector("#languages")!;
 
     Chart.defaults.font.family = "Public Sans";
-    Chart.defaults.font.size = 16;
+    Chart.defaults.font.size = 14;
+    // Chart.overrides["pie"].plugins.legend.position = "right";
 
-    function renderChart(label: string, values: number[]) {
-        const li = document.createElement("li");
-        li.style.display = "flex";
-        li.style.justifyContent = "center";
-
-        const chartContainer = document.createElement("div");
-        chartContainer.style.width = "200px";
-
+    function renderChart(label: string[], values: number[]) {
         const canvas = document.createElement("canvas");
-        canvas.id = label;
-
-        chartContainer.appendChild(canvas);
-        li.appendChild(chartContainer);
-        container.appendChild(li);
-
-        const ctx = canvas.getContext("2d")!;
-
-        const accentGrad = ctx.createLinearGradient(0, 0, 280, 0);
-        accentGrad.addColorStop(0, colors.accentLight);
-        accentGrad.addColorStop(1, colors.accentDark);
-
-        const bgGrad = ctx.createLinearGradient(0, 0, 280, 0);
-        bgGrad.addColorStop(0, colors.gray900);
-        bgGrad.addColorStop(1, colors.gray999);
+        container.appendChild(canvas);
 
         const dataset = {
+            labels: label,
             datasets: [
                 {
                     data: values,
-                    backgroundColor: [accentGrad, bgGrad],
+                    backgroundColor: colors,
                     hoverOffset: 4,
                     borderColor: "rgba(1, 1, 1, 0)",
-                    cutout: "90%",
                 },
             ],
         };
 
-        const doughnutLabel = {
-            id: "doughnutLabel",
-            beforeDatasetsDraw(chart: any) {
-                const { ctx } = chart;
-                ctx.save();
-                const xCor = chart.getDatasetMeta(0).data[0].x;
-                const yCor = chart.getDatasetMeta(0).data[0].y;
-                ctx.textAlign = "center";
-                ctx.textBaseline = "middle";
-                ctx.fillStyle = colors.accentLight;
-                ctx.fillText(label, xCor, yCor);
-            },
-        };
-
-        const chart = new Chart(ctx, {
-            type: "doughnut",
+        const chart = new Chart(canvas, {
+            type: "pie",
             data: dataset,
-            plugins: [doughnutLabel],
         });
 
         return chart;
     }
 
-    languages.forEach((lang) => {
-        let values = [lang.value, totalLangUsage - lang.value];
-        renderChart(lang.name, values);
-    });
+    renderChart(langs, values);
 </script>
+
+<style>
+    .languages-container {
+        border-radius: 0.75rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--gray-800);
+        background-color: var(--gray-999_40);
+        padding: 2.5rem;
+    }
+</style>

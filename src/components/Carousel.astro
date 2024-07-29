@@ -1,11 +1,25 @@
 ---
 import Icon from "../components/Icon.astro";
+import type { ImageMetadata } from "astro";
+import Image from "astro/components/Image.astro";
 
 interface Props {
-  href: string[];
+  imagePaths: string[];
 }
 
-const { href } = Astro.props;
+const { imagePaths } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/projects/*.{jpeg,jpg,png,gif}",
+);
+
+imagePaths.forEach((path) => {
+  if (!images[path]) {
+    throw new Error(
+      `"${path}" does not exist in glob: "/src/assets/projects/*.{jpeg,jpg,png,gif}"`,
+    );
+  }
+});
 ---
 
 <section aria-label="photo-carousel">
@@ -18,9 +32,9 @@ const { href } = Astro.props;
     </button>
     <ul>
       {
-        href.map((source) => (
+        imagePaths.map((path) => (
           <li class="slide active">
-            <img src={source} alt="" />
+            <Image src={images[path]()} alt="" />
           </li>
         ))
       }
@@ -32,11 +46,15 @@ const { href } = Astro.props;
   const slides = document.querySelectorAll(".slide");
   const slidesLength = slides.length;
   let currentSlide = 0;
-  console.log(slidesLength);
+
   updateCarousel();
 
   const prevButton = document.getElementById("prev");
   const nextButton = document.getElementById("next");
+
+  if (slidesLength == 1) {
+    removeButton();
+  }
 
   if (prevButton && nextButton) {
     nextButton.addEventListener("click", () => {
@@ -72,7 +90,20 @@ const { href } = Astro.props;
       }
     });
   }
+
+  function removeButton() {
+    if (slidesLength == 1) {
+      console.log(slidesLength);
+      prevButton?.classList.remove("carousel-button");
+      prevButton?.classList.add("hidden");
+
+      nextButton?.classList.remove("carousel-button");
+      nextButton?.classList.add("hidden");
+      return;
+    }
+  }
 </script>
+
 <style>
   .carousel {
     position: relative;
@@ -86,15 +117,15 @@ const { href } = Astro.props;
     font-size: 3em;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--gray-400);
+    color: var(--gradient-500);
     opacity: 0.5;
     cursor: pointer;
     padding: 0 0.25em;
   }
 
-  .carousel-button:hover,
-  .carousel-button:focus {
-    color: var(--gray-100);
+  .carousel-button:hover {
+    opacity: 1;
+    color: var(--accent-regular);
   }
 
   .carousel-button.prev {
@@ -125,5 +156,9 @@ const { href } = Astro.props;
     height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  .hidden {
+    display: none;
   }
 </style>
