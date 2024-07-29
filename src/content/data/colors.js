@@ -16,4 +16,3 @@ async function getColors(url) {
 }
 
 const colors = await getColors(url);
-console.log(colors);

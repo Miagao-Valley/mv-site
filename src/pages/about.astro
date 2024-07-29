@@ -6,6 +6,20 @@ import Hero from "../components/Hero.astro";
 import ProfileCard from "../components/ProfileCard.astro";
 
 import members from "../content/data/members.json";
+
+const commMembers = members.sort((a, b) => {
+	const nameA = a.name.toUpperCase(); // ignore upper and lowercase
+	const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+	if (nameA < nameB) {
+		return -1;
+	}
+	if (nameA > nameB) {
+		return 1;
+	}
+
+	// names must be equal
+	return 0;
+});
 ---
 
 <BaseLayout title="About | Miagao Valley" description="">
@@ -61,8 +75,16 @@ import members from "../content/data/members.json";
 
 				<div class="gallery">
 					<Grid variant="small">
+						<li>
+							<ProfileCard
+								imagePath="/src/assets/members/magbanua.jpg"
+								name="Ezra Magbanua"
+								githubLink="https://github.com/ezerssss"
+								linkedInLink="https://www.linkedin.com/in/ezra-magbanua-a342b1239/"
+							/>
+						</li>
 						{
-							members.map((member) => (
+							commMembers.map((member) => (
 								<li>
 									<ProfileCard
 										imagePath={member.imagePath}

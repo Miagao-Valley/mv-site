@@ -2,10 +2,9 @@
 title: mv-site
 startDate: 2024-06-30 00:00:00
 img:
-  - /assets/stock-3.jpg
-  - /assets/stock-4.jpg
-  - /assets/stock-1.jpg
-  - /assets/stock-2.jpg
+  - /src/assets/projects/stock-3.jpg
+  - /src/assets/projects/stock-1.jpg
+  - /src/assets/projects/stock-2.jpg
 img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
 description: |
   We developed a virtual showcase for the softest bedding imaginable.
@@ -14,7 +13,7 @@ tags:
   - astro
   - typescript
   - CSS
-git_link: https://github.com/Miagao-Valley/
+git_link: https://github.com/Miagao-Valley/mv-site
 yt_link: https://www.youtube.com/
 ---
 
