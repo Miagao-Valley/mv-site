@@ -2,7 +2,7 @@
 title: IskoXpress
 startDate: 2024-06-30 00:00:00
 img:
-  - /src/assets/projects/stock-4.jpg
+  - /src/assets/projects/iskoxpress.png
   - /src/assets/projects/stock-3.jpg
   - /src/assets/projects/stock-1.jpg
 img_alt: iskoexpress
