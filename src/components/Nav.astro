@@ -2,6 +2,7 @@
 import Icon from "./Icon.astro";
 // import ThemeToggle from "./ThemeToggle.astro";
 import type { iconPaths } from "./IconPaths";
+import CallToAction from "./CallToAction.astro";
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -16,6 +17,16 @@ const iconLinks: {
 	href: string;
 	icon: keyof typeof iconPaths;
 }[] = [
+	{
+		label: "Instagram",
+		href: "https://discord.gg/BzhUm6k4z7",
+		icon: "instagram-logo",
+	},
+	{
+		label: "Twitter",
+		href: "https://github.com/Miagao-Valley",
+		icon: "twitter-logo",
+	},
 	{
 		label: "Discord",
 		href: "https://discord.gg/BzhUm6k4z7",
@@ -72,7 +83,7 @@ const iconLinks: {
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
-			<div class="socials">
+			<!-- <div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
 						<a href={href} class="social">
@@ -81,6 +92,11 @@ const iconLinks: {
 						</a>
 					))
 				}
+			</div> -->
+			<div class="join-button">
+				<a href="https://discord.gg/BzhUm6k4z7" target="_blank"
+					>Join Us</a
+				>
 			</div>
 		</div>
 	</noscript>
@@ -111,7 +127,7 @@ const iconLinks: {
 			}
 		</ul>
 		<div class="menu-footer">
-			<div class="socials">
+			<!-- <div class="socials">
 				{
 					iconLinks.map(({ href, icon, label }) => (
 						<a href={href} class="social">
@@ -120,11 +136,13 @@ const iconLinks: {
 						</a>
 					))
 				}
-			</div>
-
-			<!-- <div class="theme-toggle">
-				<ThemeToggle />
 			</div> -->
+
+			<div class="join-button">
+				<a href="https://discord.gg/BzhUm6k4z7" target="_blank"
+					>Join Us</a
+				>
+			</div>
 		</div>
 	</div>
 </nav>
@@ -242,7 +260,6 @@ const iconLinks: {
 		list-style: none;
 		padding: 2rem;
 		background-color: var(--gray-999);
-		border-bottom: 1px solid var(--gray-800);
 	}
 
 	.link {
@@ -296,12 +313,49 @@ const iconLinks: {
 		color: var(--accent-text-over);
 	}
 
-	.theme-toggle {
+	.join-button {
 		display: flex;
 		align-items: center;
 		height: calc(var(--icon-size) + 2 * var(--icon-padding));
+
+		background: var(--gradient-accent);/* Overlay for hover effects. */
+	.join-button a::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		transition: background-color var(--theme-transition);
+		mix-blend-mode: overlay;
 	}
 
+	.join-button a:focus::after,
+	.join-button a:hover::after {
+		background-color: hsla(var(--gray-999-basis), 0.3);
+	}
+		border-radius: 999rem;
+		padding: 0.56em 2em;
+	}
+
+	.join-button a {
+		text-decoration: none;
+		color: white;
+	}
+
+	/* Overlay for hover effects. */
+	.join-button a::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		transition: background-color var(--theme-transition);
+		mix-blend-mode: overlay;
+	}
+
+	.join-button a:focus::after,
+	.join-button a:hover::after {
+		background-color: hsla(var(--gray-999-basis), 0.3);
+	}
+	
 	@media (min-width: 50em) {
 		nav {
 			display: grid;
