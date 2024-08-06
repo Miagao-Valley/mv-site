@@ -7,23 +7,14 @@
     import { languages } from "../content/data/githubStats.js";
     import { colors } from "../content/data/colors.js";
 
-    const langs: string[] = [];
-    languages.forEach((lang) => {
-        langs.push(lang.name);
-    });
-
-    const values: number[] = [];
-    languages.forEach((lang) => {
-        values.push(lang.value);
-    });
-
-    const container = document.querySelector("#languages")!;
-
     Chart.defaults.font.family = "Public Sans";
     Chart.defaults.font.size = 14;
-    // Chart.overrides["pie"].plugins.legend.position = "right";
 
-    function renderChart(label: string[], values: number[]) {
+    function renderChart(
+        label: string[],
+        values: number[],
+        container: Element,
+    ) {
         const canvas = document.createElement("canvas");
         container.appendChild(canvas);
 
@@ -47,7 +38,19 @@
         return chart;
     }
 
-    renderChart(langs, values);
+    const langs: string[] = [];
+    languages.forEach((lang) => {
+        langs.push(lang.name);
+    });
+
+    const values: number[] = [];
+    languages.forEach((lang) => {
+        values.push(lang.value);
+    });
+
+    const container = document.querySelector("#languages")!;
+
+    renderChart(langs, values, container);
 </script>
 
 <style>

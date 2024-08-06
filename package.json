@@ -14,6 +14,7 @@
     "@astrojs/check": "^0.8.2",
     "astro": "^4.12.2",
     "chart.js": "^4.4.3",
+    "counterup2": "^2.0.2",
     "octokit": "^4.0.2",
     "typescript": "^5.5.2"
   }
