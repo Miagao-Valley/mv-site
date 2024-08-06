@@ -1,6 +1,5 @@
 ---
 import Icon from "./Icon.astro";
-// import ThemeToggle from "./ThemeToggle.astro";
 import type { iconPaths } from "./IconPaths";
 import CallToAction from "./CallToAction.astro";
 
@@ -9,34 +8,6 @@ const textLinks: { label: string; href: string }[] = [
 	{ label: "Home", href: "/" },
 	{ label: "Projects", href: "/projects/" },
 	{ label: "About", href: "/about/" },
-];
-
-/** Icon links to social media — edit these with links to your profiles! */
-const iconLinks: {
-	label: string;
-	href: string;
-	icon: keyof typeof iconPaths;
-}[] = [
-	{
-		label: "Instagram",
-		href: "https://discord.gg/BzhUm6k4z7",
-		icon: "instagram-logo",
-	},
-	{
-		label: "Twitter",
-		href: "https://github.com/Miagao-Valley",
-		icon: "twitter-logo",
-	},
-	{
-		label: "Discord",
-		href: "https://discord.gg/BzhUm6k4z7",
-		icon: "discord-logo",
-	},
-	{
-		label: "GitHub",
-		href: "https://github.com/Miagao-Valley",
-		icon: "github-logo",
-	},
 ];
 ---
 
@@ -83,20 +54,11 @@ const iconLinks: {
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
-			<!-- <div class="socials">
-				{
-					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
-							<span class="sr-only">{label}</span>
-							<Icon icon={icon} />
-						</a>
-					))
-				}
-			</div> -->
 			<div class="join-button">
 				<a href="https://discord.gg/BzhUm6k4z7" target="_blank"
 					>Join Us</a
 				>
+				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
 			</div>
 		</div>
 	</noscript>
@@ -127,21 +89,11 @@ const iconLinks: {
 			}
 		</ul>
 		<div class="menu-footer">
-			<!-- <div class="socials">
-				{
-					iconLinks.map(({ href, icon, label }) => (
-						<a href={href} class="social">
-							<span class="sr-only">{label}</span>
-							<Icon icon={icon} />
-						</a>
-					))
-				}
-			</div> -->
-
 			<div class="join-button">
 				<a href="https://discord.gg/BzhUm6k4z7" target="_blank"
 					>Join Us</a
 				>
+				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
 			</div>
 		</div>
 	</div>
@@ -293,47 +245,15 @@ const iconLinks: {
 		box-shadow: var(--shadow-lg);
 	}
 
-	.socials {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.625rem;
-		font-size: var(--icon-size);
-	}
-
-	.social {
-		display: flex;
-		padding: var(--icon-padding);
-		text-decoration: none;
-		color: var(--accent-dark);
-		transition: color var(--theme-transition);
-	}
-
-	.social:hover,
-	.social:focus {
-		color: var(--accent-text-over);
-	}
-
 	.join-button {
 		display: flex;
 		align-items: center;
+		gap: 0.5em;
 		height: calc(var(--icon-size) + 2 * var(--icon-padding));
 
-		background: var(--gradient-accent);/* Overlay for hover effects. */
-	.join-button a::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		transition: background-color var(--theme-transition);
-		mix-blend-mode: overlay;
-	}
-
-	.join-button a:focus::after,
-	.join-button a:hover::after {
-		background-color: hsla(var(--gray-999-basis), 0.3);
-	}
+		background: var(--gradient-accent);
 		border-radius: 999rem;
-		padding: 0.56em 2em;
+		padding: 0.5em 1.5em;
 	}
 
 	.join-button a {
@@ -341,7 +261,6 @@ const iconLinks: {
 		color: white;
 	}
 
-	/* Overlay for hover effects. */
 	.join-button a::after {
 		content: "";
 		position: absolute;
@@ -355,7 +274,7 @@ const iconLinks: {
 	.join-button a:hover::after {
 		background-color: hsla(var(--gray-999-basis), 0.3);
 	}
-	
+
 	@media (min-width: 50em) {
 		nav {
 			display: grid;
@@ -406,14 +325,6 @@ const iconLinks: {
 			padding: 0;
 			background-color: transparent;
 			box-shadow: none;
-		}
-	}
-
-	@media (min-width: 60em) {
-		.socials {
-			display: flex;
-			justify-content: flex-end;
-			gap: 0;
 		}
 	}
 
