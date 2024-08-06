@@ -8,7 +8,7 @@ import {
 import Icon from "./Icon.astro";
 ---
 
-<section class="statistics">
+<section class="statistics" >
 	<div class="stack gap-2 lg:gap-2 box">
 		<Icon icon="people" size="2.5rem" color="var(--accent-dark)" />
 		<h2 class="gradient">{numMembers}</h2>
@@ -25,6 +25,18 @@ import Icon from "./Icon.astro";
 		<p>Stars</p>
 	</div>
 </section>
+
+<script>
+	import counterUp from "counterup2";
+
+	const el = document.querySelector(".gradient");
+
+	// Start counting, do this on DOM ready or with Waypoints.
+	counterUp(el, {
+		duration: 1000,
+		delay: 16,
+	});
+</script>
 
 <style>
 	.statistics {
