@@ -275,3 +275,56 @@ h5 {
 		gap: 12rem;
 	}
 }
+
+/* Utilities - Animation */
+
+.gradient-animation {
+	background: linear-gradient(270deg, #67007d, #3e007d, #92d5da);
+	background-size: 600% 600%;
+
+	-webkit-animation: GradientAnimation 20s ease infinite;
+	-moz-animation: GradientAnimation 20s ease infinite;
+	animation: GradientAnimation 20s ease infinite;
+}
+
+@-webkit-keyframes GradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@-moz-keyframes GradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes GradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}
