@@ -8,20 +8,20 @@ import {
 import Icon from "./Icon.astro";
 ---
 
-<section class="statistics" >
+<section class="statistics">
 	<div class="stack gap-2 lg:gap-2 box">
 		<Icon icon="people" size="2.5rem" color="var(--accent-dark)" />
-		<h2 class="gradient">{numMembers}</h2>
+		<h2 class="gradient counter">{numMembers}</h2>
 		<p>Members</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4 box">
 		<Icon icon="terminal-window" size="2.5rem" color="var(--accent-dark)" />
-		<h2 class="gradient">{numProjects}</h2>
+		<h2 class="gradient counter">{numProjects}</h2>
 		<p>Projects</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4 box">
 		<Icon icon="star" size="2.5rem" color="var(--accent-dark)" />
-		<h2 class="gradient">{numStars}</h2>
+		<h2 class="gradient counter">{numStars}</h2>
 		<p>Stars</p>
 	</div>
 </section>
@@ -29,12 +29,28 @@ import Icon from "./Icon.astro";
 <script>
 	import counterUp from "counterup2";
 
-	const el = document.querySelector(".gradient");
+	function countUp(element: Element) {
+		const callback = () => {
+			counterUp(element, {
+				duration: 500,
+				delay: 16,
+			});
+		};
 
-	// Start counting, do this on DOM ready or with Waypoints.
-	counterUp(el, {
-		duration: 1000,
-		delay: 16,
+		const options = {
+			root: null,
+			rootMargin: "0px",
+			threshold: 1.0,
+		};
+
+		const observer = new IntersectionObserver(callback, options);
+		observer.observe(element);
+	}
+
+	const counters = document.querySelectorAll(".counter");
+
+	counters.forEach((counter) => {
+		countUp(counter);
 	});
 </script>
 
