@@ -1,12 +1,13 @@
 ---
 interface Props {
 	href: string;
+	size?: "" | "xl-size";
 }
 
-const { href } = Astro.props;
+const { href, size = "xl-size" } = Astro.props;
 ---
 
-<a href={href}><slot /></a>
+<a href={href} class=`${size}`><slot /></a>
 
 <style>
 	a {
@@ -48,7 +49,7 @@ const { href } = Astro.props;
 	}
 
 	@media (min-width: 50em) {
-		a {
+		.xl-size {
 			padding: 1.125rem 2.5rem;
 			font-size: var(--text-xl);
 		}
