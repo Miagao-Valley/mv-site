@@ -1,5 +1,5 @@
 <div class="languages-container">
-    <div id="languages" style="width: 400px;"></div>
+    <div id="languages"></div>
 </div>
 
 <script>
@@ -8,39 +8,11 @@
     import { colors } from "../content/data/colors.js";
 
     Chart.defaults.font.family = "Public Sans";
-    Chart.defaults.font.size = 14;
+    Chart.defaults.font.size = 13;
 
-    function renderChart(
-        label: string[],
-        values: number[],
-        container: Element,
-    ) {
-        const canvas = document.createElement("canvas");
-        container.appendChild(canvas);
-
-        const dataset = {
-            labels: label,
-            datasets: [
-                {
-                    data: values,
-                    backgroundColor: colors,
-                    hoverOffset: 4,
-                    borderColor: "rgba(1, 1, 1, 0)",
-                },
-            ],
-        };
-
-        const chart = new Chart(canvas, {
-            type: "pie",
-            data: dataset,
-        });
-
-        return chart;
-    }
-
-    const langs: string[] = [];
+    const labels: string[] = [];
     languages.forEach((lang) => {
-        langs.push(lang.name);
+        labels.push(lang.name);
     });
 
     const values: number[] = [];
@@ -49,8 +21,28 @@
     });
 
     const container = document.querySelector("#languages")!;
+    const canvas = document.createElement("canvas");
+    container.appendChild(canvas);
 
-    renderChart(langs, values, container);
+    const dataset = {
+        labels,
+        datasets: [
+            {
+                data: values,
+                backgroundColor: colors,
+                hoverOffset: 4,
+                borderColor: "rgba(1, 1, 1, 0)",
+            },
+        ],
+    };
+
+    const chart = new Chart(canvas, {
+        type: "pie",
+        data: dataset,
+        options: {
+            maintainAspectRatio: false,
+        },
+    });
 </script>
 
 <style>
@@ -60,5 +52,19 @@
         border: 1px solid var(--gray-800);
         background-color: var(--gray-999_40);
         padding: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 20rem;
+        width: 20rem;
+    }
+
+    @media (min-width: 50em) {
+        .languages-container {
+            padding: 0rem;
+            height: 25rem;
+            width: 30rem;
+        }
     }
 </style>
