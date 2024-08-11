@@ -42,7 +42,7 @@ const projects = (await getCollection("projects"))
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-30">
-			<section class="section left">
+			<section class="section left" id="statistics">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Our Community in Numbers</h3>
 				</header>
@@ -111,6 +111,35 @@ const projects = (await getCollection("projects"))
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<script>
+	import counterUp from "counterup2";
+
+	const countUp = () => {
+		document.querySelectorAll(".counter").forEach((counter) => {
+			counterUp(counter, {
+				duration: 500,
+				delay: 16,
+			});
+		});
+	};
+
+	const options = {
+		root: null,
+		rootMargin: "0px",
+		threshold: 1.0,
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				countUp();
+			}
+		});
+	}, options);
+
+	observer.observe(document.getElementById("statistics")!);
+</script>
 
 <style>
 	.hero {
@@ -263,8 +292,4 @@ const projects = (await getCollection("projects"))
 			height: 9.5rem;
 		}
 	}
-
-	/* ====================================================== */
-
-	
 </style>
