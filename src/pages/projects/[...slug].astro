@@ -7,6 +7,7 @@ import Carousel from "../../components/Carousel.astro";
 import ContactCTA from "../../components/ContactCTA.astro";
 import Hero from "../../components/Hero.astro";
 import Icon from "../../components/Icon.astro";
+import LightBox from "../../components/LightBox.astro";
 import Pill from "../../components/Pill.astro";
 
 interface Props {
@@ -63,6 +64,7 @@ const { Content } = await entry.render();
         </div>
       </header>
       <main class="wrapper">
+        <LightBox imagePaths={entry.data.img} />
         <div class="stack gap-10 content">
           <Carousel imagePaths={entry.data.img} />
           <div class="content">
