@@ -22,12 +22,15 @@ imagePaths.forEach((path) => {
 });
 ---
 
-<section aria-label="photo-lightbox">
-  <div class="lightbox">
-    <button class="lightbox-button prev" id="prev">
+<section aria-label="lightbox">
+  <div class="hidden" id="lightbox">
+    <button class="lightbox-button lightbox-close" id="lightbox-close">
+      <Icon icon="x" />
+    </button>
+    <button class="lightbox-button lightbox-prev" id="lightbox-prev">
       <Icon icon="arrow-left" />
     </button>
-    <button class="lightbox-button next" id="next">
+    <button class="lightbox-button lightbox-next" id="lightbox-next">
       <Icon icon="arrow-right" />
     </button>
 
@@ -48,43 +51,10 @@ imagePaths.forEach((path) => {
   const slidesLength = slides.length;
   let currentSlide = 0;
 
-  updatelightbox();
-
-  const prevButton = document.getElementById("prev");
-  const nextButton = document.getElementById("next");
-
-  console.log(slidesLength);
-
-  if (slidesLength == 1) {
-    removeButton();
-  }
-
-  if (prevButton && nextButton) {
-    nextButton.addEventListener("click", () => {
-      console.log("Next");
-      goToNextSlide();
-      console.log(currentSlide);
-    });
-
-    prevButton.addEventListener("click", () => {
-      console.log("Prev");
-      goToPreviousSlide();
-      console.log(currentSlide);
-    });
-  } else {
-    console.error("Buttons not found.");
-  }
-
-  // Get dynamic length
-  function goToPreviousSlide() {
-    currentSlide = currentSlide === 0 ? slidesLength - 1 : currentSlide - 1;
-    updatelightbox();
-  }
-
-  function goToNextSlide() {
-    currentSlide = currentSlide === slidesLength - 1 ? 0 : currentSlide + 1;
-    updatelightbox();
-  }
+  const prevBtn = document.getElementById("lightbox-prev");
+  const nextBtn = document.getElementById("lightbox-next");
+  const closeBtn = document.getElementById("lightbox-close");
+  const lightbox = document.getElementById("lightbox");
 
   function updatelightbox() {
     slides.forEach((slide, index) => {
@@ -98,14 +68,42 @@ imagePaths.forEach((path) => {
     });
   }
 
-  function removeButton() {
-    console.log(slidesLength);
-    prevButton?.classList.remove("lightbox-button");
-    prevButton?.classList.add("hidden");
-
-    nextButton?.classList.remove("lightbox-button");
-    nextButton?.classList.add("hidden");
+  function goToPreviousSlide() {
+    currentSlide = currentSlide === 0 ? slidesLength - 1 : currentSlide - 1;
+    updatelightbox();
   }
+
+  function goToNextSlide() {
+    currentSlide = currentSlide === slidesLength - 1 ? 0 : currentSlide + 1;
+    updatelightbox();
+  }
+
+  updatelightbox();
+
+  if (slidesLength == 1) {
+    prevBtn?.classList.remove("lightbox-button");
+    prevBtn?.classList.add("hidden");
+
+    nextBtn?.classList.remove("lightbox-button");
+    nextBtn?.classList.add("hidden");
+  }
+
+  if (prevBtn && nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      goToNextSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      goToPreviousSlide();
+    });
+  } else {
+    console.error("Buttons not found.");
+  }
+
+  closeBtn?.addEventListener("click", () => {
+    lightbox?.classList.remove("lightbox");
+    lightbox?.classList.add("hidden");
+  });
 </script>
 
 <style>
@@ -126,7 +124,6 @@ imagePaths.forEach((path) => {
   }
 
   .lightbox-button {
-    display: flex;
     position: absolute;
     background: none;
     border: none;
@@ -143,11 +140,16 @@ imagePaths.forEach((path) => {
     background-color: white;
   }
 
-  .lightbox-button.prev {
+  .lightbox-button.lightbox-prev {
     left: 0.5rem;
   }
 
-  .lightbox-button.next {
+  .lightbox-button.lightbox-next {
+    right: 0.5rem;
+  }
+
+  .lightbox-button.lightbox-close {
+    top: 1rem;
     right: 0.5rem;
   }
 
@@ -168,10 +170,6 @@ imagePaths.forEach((path) => {
     object-fit: contain;
   }
 
-  .hidden {
-    display: none;
-  }
-
   @media (min-width: 50em) {
     .lightbox-button {
       font-size: 2em;
@@ -180,9 +178,14 @@ imagePaths.forEach((path) => {
     .lightbox-slide > img {
       width: 80%;
     }
-    
+
     .lightbox-button {
       color: white;
+    }
+
+    .lightbox-button.lightbox-close {
+      color: var(--gradient-500);
+      font-size: 1.75em;
     }
   }
 </style>

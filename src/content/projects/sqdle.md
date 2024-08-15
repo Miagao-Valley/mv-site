@@ -3,9 +3,6 @@ title: sqdle
 startDate: 2024-07-16 00:00:00
 img:
   - /src/assets/projects/sqdle.png
-  - /src/assets/projects/stock-1.jpg
-  - /src/assets/projects/stock-3.jpg
-  - /src/assets/projects/stock-2.jpg
 img_alt: sqdle
 description: |
   Daily SQL challenges
