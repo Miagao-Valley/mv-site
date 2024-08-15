@@ -195,4 +195,21 @@ const { Content } = await entry.render();
       justify-content: left;
     }
   }
+
+  @media (max-width: 50em) {
+    .content :global(h1) {
+      font-size: var(--text-3xl);
+    }
+
+    .content :global(h2),
+    .content :global(h3),
+    .content :global(h4),
+    .content :global(h5) {
+      font-size: var(--text-2xl);
+    }
+
+    .tags, .description {
+      font-size: var(--text-base);
+    }
+  }
 </style>
