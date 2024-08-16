@@ -24,16 +24,16 @@ imagePaths.forEach((path) => {
 
 <section aria-label="photo-carousel">
   <div class="carousel">
-    <button class="carousel-button prev" id="prev">
+    <button class="carousel-button carousel-prev" id="carousel-prev">
       <Icon icon="arrow-left" />
     </button>
-    <button class="carousel-button next" id="next">
+    <button class="carousel-button carousel-next" id="carousel-next">
       <Icon icon="arrow-right" />
     </button>
     <ul>
       {
         imagePaths.map((path) => (
-          <li class="slide active">
+          <li class="carousel-slide active">
             <Image src={images[path]()} alt="" />
           </li>
         ))
@@ -43,43 +43,12 @@ imagePaths.forEach((path) => {
 </section>
 
 <script>
-  const slides = document.querySelectorAll(".slide");
+  const slides = document.querySelectorAll(".carousel-slide");
   const slidesLength = slides.length;
   let currentSlide = 0;
 
-  updateCarousel();
-
-  const prevButton = document.getElementById("prev");
-  const nextButton = document.getElementById("next");
-
-  if (slidesLength == 1) {
-    removeButton();
-  }
-
-  if (prevButton && nextButton) {
-    nextButton.addEventListener("click", () => {
-      console.log("Next");
-      goToNextSlide();
-    });
-
-    prevButton.addEventListener("click", () => {
-      console.log("Prev");
-      goToPreviousSlide();
-    });
-  } else {
-    console.error("Buttons not found.");
-  }
-
-  // Get dynamic length
-  function goToPreviousSlide() {
-    currentSlide = currentSlide === 0 ? slidesLength - 1 : currentSlide - 1;
-    updateCarousel();
-  }
-
-  function goToNextSlide() {
-    currentSlide = currentSlide === slidesLength - 1 ? 0 : currentSlide + 1;
-    updateCarousel();
-  }
+  const prevButton = document.getElementById("carousel-prev");
+  const nextButton = document.getElementById("carousel-next");
 
   function updateCarousel() {
     slides.forEach((slide, index) => {
@@ -90,17 +59,37 @@ imagePaths.forEach((path) => {
       }
     });
   }
+  
+  function goToPreviousSlide() {
+    currentSlide = currentSlide === 0 ? slidesLength - 1 : currentSlide - 1;
+    updateCarousel();
+  }
 
-  function removeButton() {
-    if (slidesLength == 1) {
-      console.log(slidesLength);
-      prevButton?.classList.remove("carousel-button");
-      prevButton?.classList.add("hidden");
+  function goToNextSlide() {
+    currentSlide = currentSlide === slidesLength - 1 ? 0 : currentSlide + 1;
+    updateCarousel();
+  }
 
-      nextButton?.classList.remove("carousel-button");
-      nextButton?.classList.add("hidden");
-      return;
-    }
+  updateCarousel();
+
+  if (slidesLength == 1) {
+    prevButton?.classList.remove("carousel-button");
+    prevButton?.classList.add("hidden");
+
+    nextButton?.classList.remove("carousel-button");
+    nextButton?.classList.add("hidden");
+  }
+
+  if (prevButton && nextButton) {
+    nextButton.addEventListener("click", () => {
+      goToNextSlide();
+    });
+
+    prevButton.addEventListener("click", () => {
+      goToPreviousSlide();
+    });
+  } else {
+    console.error("Buttons not found.");
   }
 </script>
 
@@ -114,7 +103,7 @@ imagePaths.forEach((path) => {
     position: absolute;
     background: none;
     border: none;
-    font-size: 3em;
+    font-size: 2.5em;
     top: 50%;
     transform: translateY(-50%);
     color: var(--gradient-500);
@@ -128,11 +117,11 @@ imagePaths.forEach((path) => {
     color: var(--accent-regular);
   }
 
-  .carousel-button.prev {
+  .carousel-button.carousel-prev {
     left: 0.5rem;
   }
 
-  .carousel-button.next {
+  .carousel-button.carousel-next {
     right: 0.5rem;
   }
 
@@ -142,15 +131,15 @@ imagePaths.forEach((path) => {
     list-style: none;
   }
 
-  .slide {
+  .carousel-slide {
     display: none;
   }
 
-  .slide.active {
+  .carousel-slide.active {
     display: block;
   }
 
-  .slide > img {
+  .carousel-slide > img {
     display: block;
     width: 100%;
     height: 100%;
@@ -158,7 +147,9 @@ imagePaths.forEach((path) => {
     object-position: center;
   }
 
-  .hidden {
-    display: none;
+  @media (max-width: 50em) {
+    .carousel-slide.active {
+      aspect-ratio: 3/4;
+    }
   }
 </style>

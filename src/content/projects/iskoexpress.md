@@ -3,8 +3,6 @@ title: IskoXpress
 startDate: 2024-06-30 00:00:00
 img:
   - /src/assets/projects/iskoxpress.png
-  - /src/assets/projects/stock-3.jpg
-  - /src/assets/projects/stock-1.jpg
 img_alt: iskoexpress
 description: |
   A social platform for UPV students to exchange and express their thoughts.

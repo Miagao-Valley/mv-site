@@ -26,34 +26,6 @@ import Icon from "./Icon.astro";
 	</div>
 </section>
 
-<script>
-	import counterUp from "counterup2";
-
-	function countUp(element: Element) {
-		const callback = () => {
-			counterUp(element, {
-				duration: 500,
-				delay: 16,
-			});
-		};
-
-		const options = {
-			root: null,
-			rootMargin: "0px",
-			threshold: 1.0,
-		};
-
-		const observer = new IntersectionObserver(callback, options);
-		observer.observe(element);
-	}
-
-	const counters = document.querySelectorAll(".counter");
-
-	counters.forEach((counter) => {
-		countUp(counter);
-	});
-</script>
-
 <style>
 	.statistics {
 		border: 1px solid var(--gray-800);

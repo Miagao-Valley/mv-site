@@ -7,6 +7,7 @@ import Carousel from "../../components/Carousel.astro";
 import ContactCTA from "../../components/ContactCTA.astro";
 import Hero from "../../components/Hero.astro";
 import Icon from "../../components/Icon.astro";
+import LightBox from "../../components/LightBox.astro";
 import Pill from "../../components/Pill.astro";
 
 interface Props {
@@ -63,6 +64,7 @@ const { Content } = await entry.render();
         </div>
       </header>
       <main class="wrapper">
+        <LightBox imagePaths={entry.data.img} />
         <div class="stack gap-10 content">
           <Carousel imagePaths={entry.data.img} />
           <div class="content">
@@ -74,6 +76,18 @@ const { Content } = await entry.render();
     <ContactCTA />
   </div>
 </BaseLayout>
+
+<script>
+  const imageSlides = document.querySelectorAll(".carousel-slide");
+  const lightbox = document.getElementById("lightbox");
+
+  imageSlides.forEach((imageSlide) => {
+    imageSlide.addEventListener("click", () => {
+      lightbox?.classList.remove("hidden");
+      lightbox?.classList.add("lightbox");
+    });
+  });
+</script>
 
 <style>
   header {
@@ -92,6 +106,8 @@ const { Content } = await entry.render();
 
   .tags {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
   }
 
@@ -106,7 +122,7 @@ const { Content } = await entry.render();
   }
 
   .content {
-    max-width: 65ch;
+    max-width: 35ch;
     margin-inline: auto;
   }
 
@@ -120,6 +136,7 @@ const { Content } = await entry.render();
   .content :global(h4),
   .content :global(h5) {
     margin: 1.5rem 0;
+    word-break: break-word;
   }
 
   .content :global(img) {
@@ -166,6 +183,33 @@ const { Content } = await entry.render();
 
     .content :global(blockquote) {
       font-size: var(--text-2xl);
+    }
+  }
+
+  @media (min-width: 50em) {
+    .content {
+      max-width: 65ch;
+    }
+
+    .tags {
+      justify-content: left;
+    }
+  }
+
+  @media (max-width: 50em) {
+    .content :global(h1) {
+      font-size: var(--text-3xl);
+    }
+
+    .content :global(h2),
+    .content :global(h3),
+    .content :global(h4),
+    .content :global(h5) {
+      font-size: var(--text-2xl);
+    }
+
+    .tags, .description {
+      font-size: var(--text-base);
     }
   }
 </style>

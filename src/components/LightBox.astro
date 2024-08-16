@@ -1,0 +1,191 @@
+---
+import Icon from "./Icon.astro";
+import type { ImageMetadata } from "astro";
+import Image from "astro/components/Image.astro";
+
+interface Props {
+  imagePaths: string[];
+}
+
+const { imagePaths } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/projects/*.{jpeg,jpg,png,gif}",
+);
+
+imagePaths.forEach((path) => {
+  if (!images[path]) {
+    throw new Error(
+      `"${path}" does not exist in glob: "/src/assets/projects/*.{jpeg,jpg,png,gif}"`,
+    );
+  }
+});
+---
+
+<section aria-label="lightbox">
+  <div class="hidden" id="lightbox">
+    <button class="lightbox-button lightbox-close" id="lightbox-close">
+      <Icon icon="x" />
+    </button>
+    <button class="lightbox-button lightbox-prev" id="lightbox-prev">
+      <Icon icon="arrow-left" />
+    </button>
+    <button class="lightbox-button lightbox-next" id="lightbox-next">
+      <Icon icon="arrow-right" />
+    </button>
+
+    <ul>
+      {
+        imagePaths.map((path) => (
+          <li class="lightbox-slide active">
+            <Image src={images[path]()} alt="" />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll(".lightbox-slide");
+  const slidesLength = slides.length;
+  let currentSlide = 0;
+
+  const prevBtn = document.getElementById("lightbox-prev");
+  const nextBtn = document.getElementById("lightbox-next");
+  const closeBtn = document.getElementById("lightbox-close");
+  const lightbox = document.getElementById("lightbox");
+
+  function updatelightbox() {
+    slides.forEach((slide, index) => {
+      if (index === currentSlide) {
+        slide.classList.remove("hidden");
+        slide.classList.add("lightbox-slide");
+      } else {
+        slide.classList.remove("lightbox-slide");
+        slide.classList.add("hidden");
+      }
+    });
+  }
+
+  function goToPreviousSlide() {
+    currentSlide = currentSlide === 0 ? slidesLength - 1 : currentSlide - 1;
+    updatelightbox();
+  }
+
+  function goToNextSlide() {
+    currentSlide = currentSlide === slidesLength - 1 ? 0 : currentSlide + 1;
+    updatelightbox();
+  }
+
+  updatelightbox();
+
+  if (slidesLength == 1) {
+    prevBtn?.classList.remove("lightbox-button");
+    prevBtn?.classList.add("hidden");
+
+    nextBtn?.classList.remove("lightbox-button");
+    nextBtn?.classList.add("hidden");
+  }
+
+  if (prevBtn && nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      goToNextSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      goToPreviousSlide();
+    });
+  } else {
+    console.error("Buttons not found.");
+  }
+
+  closeBtn?.addEventListener("click", () => {
+    lightbox?.classList.remove("lightbox");
+    lightbox?.classList.add("hidden");
+  });
+</script>
+
+<style>
+  .lightbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    z-index: 999999;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .lightbox-button {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: var(--gradient-500);
+    opacity: 0.5;
+    cursor: pointer;
+
+    background-color: rgba(1, 1, 1, 0.25);
+  }
+
+  .lightbox-button:hover {
+    color: var(--accent-regular);
+    background-color: white;
+  }
+
+  .lightbox-button.lightbox-prev {
+    left: 0.5rem;
+  }
+
+  .lightbox-button.lightbox-next {
+    right: 0.5rem;
+  }
+
+  .lightbox-button.lightbox-close {
+    top: 1rem;
+    right: 0.5rem;
+  }
+
+  .lightbox > ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lightbox-slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  .lightbox-slide > img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+  }
+
+  @media (min-width: 50em) {
+    .lightbox-button {
+      font-size: 2em;
+    }
+
+    .lightbox-slide > img {
+      width: 80%;
+    }
+
+    .lightbox-button {
+      color: white;
+    }
+
+    .lightbox-button.lightbox-close {
+      color: var(--gradient-500);
+      font-size: 1.75em;
+    }
+  }
+</style>
