@@ -29,7 +29,7 @@ const image = images[imagePath]();
     <Image
         src={image}
         alt=""
-        style="grid-area: 1 / 1 / 3 / 3; width: 100%; height: 100%; object-fit: cover; "
+        style="grid-area: 1 / 1 / 3 / 3; width: 100%; height: 100%; object-fit: cover;"
     />
     <span class="info">
         {name}
@@ -66,15 +66,24 @@ const image = images[imagePath]();
         box-shadow: var(--shadow-md);
     }
 
-    .info {
+    .info-list {
         display: none;
     }
 
-    .info-list {
+    .info {
         grid-area: 2 / 1 / 3 / 2;
+        z-index: 1;
         margin: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: var(--gray-999);
+        border-radius: 0.9375rem;
         display: flex;
-        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        font-size: var(--text-base);
+        text-align: center;
+        color: var(--accent-dark);
+        white-space: nowrap;
     }
 
     a {
@@ -95,21 +104,14 @@ const image = images[imagePath]();
 
         .info {
             grid-area: 2 / 1 / 3 / 2;
-            z-index: 1;
-            margin: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--gray-999);
-            border-radius: 0.9375rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             font-size: var(--text-lg);
-            text-align: center;
-            color: var(--accent-dark);
         }
 
         .info-list {
             grid-area: 1 / 2 / 2 / 3;
+            margin: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
             /* if col justify: y; align: x */
             flex-direction: column;
             justify-content: flex-start;

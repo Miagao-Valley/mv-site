@@ -24,26 +24,21 @@ const commMembers = members.sort((a, b) => {
 
 <BaseLayout title="About | Miagao Valley" description="">
 	<div class="stack gap-20 lg:gap-48" data-pagefind-ignore>
-		<main class="wrapper stack gap-20 lg:gap-48">
+		<main class="wrapper stack gap-20 lg:gap-30">
+			<div class="hero">
+				<Hero title=" Meet our Community" tagline="" />
+			</div>
 			<div class="wrapper about">
-				<Hero title="Meet our Community" tagline="">
-					<!-- <img
-						width="776.5"
-						height="436.5"
-						src="/assets/at-work.jpg"
-						alt="Jeanine White at work with a colleague"
-					/> -->
-				</Hero>
 				<section class="description">
 					<h2 class="section-title">Vision</h2>
 					<div class="content">
 						<p>
-							Our goal is to elevate the skills of students in
-							coding and project management skills, help them in
-							developing real and engaging projects for their
-							portfolios, and foster a community where students
-							are not afraid to learn new ideas, technologies, and
-							responsibilities.
+							Miagao Valley envisions a community where students
+							are eager to explore new ideas and technologies,
+							take on responsibilities, and populate their
+							portfolios with real and interesting projects to
+							enhance their skills in programming and project
+							management.
 						</p>
 					</div>
 				</section>
@@ -51,19 +46,30 @@ const commMembers = members.sort((a, b) => {
 				<section class="description">
 					<h2 class="section-title">Mission</h2>
 					<div class="content">
-						<p>
-							Ultrices tincidunt arcu non sodales neque sodales
-							ut. Sed enim ut sem viverra aliquet eget sit amet.
-							Lacus luctus accumsan tortor posuere ac ut consequat
-							semper viverra. Viverra accumsan in nisl nisi
-							scelerisque eu ultrices. In massa tempor nec feugiat
-							nisl pretium fusce.
-						</p>
+						<p>Miagao Valley aims to:</p>
+						<ul>
+							<li>
+								To develop challenging yet attainable projects
+								utilizing Computer Science concepts and
+								technologies,
+							</li>
+							<li>
+								To showcase and enhance the technical skills and
+								creativity of its members,
+							</li>
+							<li>
+								To encourage its members to manage projects,
+								learn, lead, and help other students, and
+							</li>
+							<li>
+								To enforce guidelines and standards for projects
+								and contributions.
+							</li>
+						</ul>
 					</div>
 				</section>
 			</div>
-
-			<section class="section with-background">
+			<section class="section">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Members</h3>
 					<p>
@@ -105,6 +111,12 @@ const commMembers = members.sort((a, b) => {
 </BaseLayout>
 
 <style>
+	.hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	.about {
 		display: flex;
 		flex-direction: column;
@@ -134,6 +146,10 @@ const commMembers = members.sort((a, b) => {
 		grid-column: 2 / 4;
 	}
 
+	.content :global(ul) {
+		list-style-type: lower-alpha;
+	}
+
 	.content :global(a) {
 		text-decoration: 1px solid underline transparent;
 		text-underline-offset: 0.25em;
@@ -145,55 +161,9 @@ const commMembers = members.sort((a, b) => {
 		text-decoration-color: currentColor;
 	}
 
-	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
-		}
-
-		.about > :global(:first-child) {
-			grid-column-start: 2;
-		}
-
-		.description {
-			display: contents;
-			font-size: var(--text-lg);
-		}
-	}
-
-	/** */
-
 	.section {
 		display: grid;
 		gap: 2rem;
-	}
-
-	.with-background {
-		position: relative;
-	}
-
-	.with-background::before {
-		--hero-bg: var(--bg-image-subtle-2);
-
-		content: "";
-		position: absolute;
-		pointer-events: none;
-		left: 50%;
-		width: 100vw;
-		aspect-ratio: calc(2.25 / var(--bg-scale));
-		top: 0;
-		transform: translateY(-75%) translateX(-50%);
-		background:
-			url("/assets/backgrounds/noise.png") top center/220px repeat,
-			var(--hero-bg) center center / var(--bg-gradient-size) no-repeat,
-			var(--gray-999);
-		background-blend-mode: overlay, normal, normal, normal;
-		mix-blend-mode: var(--bg-blend-mode);
-		z-index: -1;
-	}
-
-	.with-background.bg-variant::before {
-		--hero-bg: var(--bg-image-subtle-1);
 	}
 
 	.section-header {
@@ -209,6 +179,24 @@ const commMembers = members.sort((a, b) => {
 	}
 
 	@media (min-width: 50em) {
+		.hero {
+			padding-top: 5rem;
+		}
+
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		.description {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+
 		.section {
 			grid-template-columns: repeat(4, 1fr);
 			grid-template-areas: "header header header header" "gallery gallery gallery gallery";
