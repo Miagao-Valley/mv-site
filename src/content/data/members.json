@@ -8,8 +8,8 @@
     {
         "imagePath": "/src/assets/members/mabait.jpeg",
         "name": "Rian Mabait",
-        "githubLink": "",
-        "linkedInLink": ""
+        "githubLink": "https://github.com/lueezzzz",
+        "linkedInLink": "https://www.linkedin.com/in/rian-luis-mabait-a1044626b/"
     },
     {
         "imagePath": "/src/assets/members/placeholder.jpg",
@@ -18,10 +18,10 @@
         "linkedInLink": ""
     },
     {
-        "imagePath": "/src/assets/members/placeholder.jpg",
+        "imagePath": "/src/assets/members/bayle.jpg",
         "name": "Aimee Bayle",
-        "githubLink": "",
-        "linkedInLink": ""
+        "githubLink": "https://github.com/breamier",
+        "linkedInLink": "https://www.linkedin.com/in/aimee-rae-bayle-35b621311/"
     },
     {
         "imagePath": "/src/assets/members/placeholder.jpg",
