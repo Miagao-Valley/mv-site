@@ -11,10 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.8.2",
-    "astro": "^4.12.2",
+    "@astrojs/check": "^0.9.2",
+    "@astrojs/db": "^0.13.1",
+    "astro": "^4.14.2",
     "chart.js": "^4.4.3",
     "counterup2": "^2.0.2",
+    "firebase": "^10.13.0",
+    "firebase-admin": "^12.3.1",
     "octokit": "^4.0.2",
     "typescript": "^5.5.2"
   }
