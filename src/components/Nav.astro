@@ -1,6 +1,5 @@
 ---
 import Icon from "./Icon.astro";
-import type { iconPaths } from "./IconPaths";
 import CallToAction from "./CallToAction.astro";
 
 /** Main menu items */
@@ -14,7 +13,7 @@ const textLinks: { label: string; href: string }[] = [
 <nav data-pagefind-ignore>
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<img id="logo" width="50" height="50" src="/assets/logo.png" />
+			<img id="logo" width="65" height="65" src="/assets/logo.png" />
 		</a>
 		<menu-button>
 			<template>
@@ -54,12 +53,10 @@ const textLinks: { label: string; href: string }[] = [
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
-			<div class="join-button">
-				<a href="https://discord.gg/kzAKWghs" target="_blank"
-					>Join Us</a
-				>
+			<CallToAction href="https://discord.gg/kzAKWghs" size="">
+				Join Us
 				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
-			</div>
+			</CallToAction>
 		</div>
 	</noscript>
 	<div id="menu-content" hidden>
@@ -89,12 +86,10 @@ const textLinks: { label: string; href: string }[] = [
 			}
 		</ul>
 		<div class="menu-footer">
-			<div class="join-button">
-				<a href="https://discord.gg/kzAKWghs" target="_blank"
-					>Join Us</a
-				>
+			<CallToAction href="https://discord.gg/kzAKWghs" size="">
+				Join Us
 				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
-			</div>
+			</CallToAction>
 		</div>
 	</div>
 </nav>
@@ -243,36 +238,6 @@ const textLinks: { label: string; href: string }[] = [
 		background-color: var(--gray-999);
 		border-radius: 0 0 0.75rem 0.75rem;
 		box-shadow: var(--shadow-lg);
-	}
-
-	.join-button {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		height: calc(var(--icon-size) + 2 * var(--icon-padding));
-
-		background: var(--gradient-accent);
-		border-radius: 999rem;
-		padding: 0.5em 1.5em;
-	}
-
-	.join-button a {
-		text-decoration: none;
-		color: white;
-	}
-
-	.join-button a::after {
-		content: "";
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		transition: background-color var(--theme-transition);
-		mix-blend-mode: overlay;
-	}
-
-	.join-button a:focus::after,
-	.join-button a:hover::after {
-		background-color: hsla(var(--gray-999-basis), 0.3);
 	}
 
 	@media (min-width: 60em) {
