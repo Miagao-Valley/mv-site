@@ -1,15 +1,23 @@
-<form id="form" method="post" action="/api/test">
-    <ul>
-        <li>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name" required />
-        </li>
-        <li>
-            <label for="email">Email: </label>
-            <input type="email" id="email" name="email" required />
-        </li>
-        <li>
-            <button type="submit">Submit</button>
-        </li>
-    </ul>
-</form>
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+    <main>
+        <form id="form" method="post" action="/api/test">
+            <ul>
+                <li>
+                    <label for="name">Name: </label>
+                    <input type="text" id="name" name="name" required />
+                </li>
+                <li>
+                    <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" required />
+                </li>
+                <li>
+                    <button type="submit">Submit</button>
+                </li>
+            </ul>
+        </form>
+    </main>
+</BaseLayout>
