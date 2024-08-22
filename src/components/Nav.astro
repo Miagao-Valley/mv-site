@@ -1,7 +1,5 @@
 ---
 import Icon from "./Icon.astro";
-import type { iconPaths } from "./IconPaths";
-import CallToAction from "./CallToAction.astro";
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
@@ -11,7 +9,7 @@ const textLinks: { label: string; href: string }[] = [
 ];
 ---
 
-<nav data-pagefind-ignore>
+<nav>
 	<div class="menu-header">
 		<a href="/" class="site-title">
 			<img id="logo" width="50" height="50" src="/assets/logo.png" />
