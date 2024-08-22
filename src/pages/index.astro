@@ -18,7 +18,6 @@ import ContactCTA from "../components/ContactCTA.astro";
 import Langauages from "../components/Langauages.astro";
 import Statistics from "../components/Statistics.astro";
 import Benefits from "../components/Benefits.astro";
-import Form from "../components/Form.astro";
 
 // Content Fetching: List four most recent projects
 const projects = (await getCollection("projects"))
@@ -108,10 +107,6 @@ const projects = (await getCollection("projects"))
 				<div class="gallery">
 					<Langauages />
 				</div>
-			</section>
-
-			<section>
-				<Form/>
 			</section>
 		</main>
 
