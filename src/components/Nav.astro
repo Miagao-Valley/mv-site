@@ -1,6 +1,5 @@
 ---
 import Icon from "./Icon.astro";
-import type { iconPaths } from "./IconPaths";
 import CallToAction from "./CallToAction.astro";
 
 /** Main menu items */
@@ -14,7 +13,7 @@ const textLinks: { label: string; href: string }[] = [
 <nav data-pagefind-ignore>
 	<div class="menu-header">
 		<a href="/" class="site-title">
-			<img id="logo" width="50" height="50" src="/assets/logo.png" />
+			<img id="logo" width="65" height="65" src="/assets/logo.png" />
 		</a>
 		<menu-button>
 			<template>
@@ -54,12 +53,16 @@ const textLinks: { label: string; href: string }[] = [
 	</noscript>
 	<noscript>
 		<div class="menu-footer">
-			<div class="join-button">
+			<!-- <div class="join-button">
 				<a href="https://discord.gg/kzAKWghs" target="_blank"
 					>Join Us</a
 				>
 				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
-			</div>
+			</div> -->
+			<CallToAction href="https://discord.gg/kzAKWghs" size="">
+				Join Us
+				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
+			</CallToAction>
 		</div>
 	</noscript>
 	<div id="menu-content" hidden>
@@ -89,12 +92,16 @@ const textLinks: { label: string; href: string }[] = [
 			}
 		</ul>
 		<div class="menu-footer">
-			<div class="join-button">
+			<!-- <div class="join-button">
 				<a href="https://discord.gg/kzAKWghs" target="_blank"
 					>Join Us</a
 				>
 				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
-			</div>
+			</div> -->
+			<CallToAction href="https://discord.gg/kzAKWghs" size="">
+				Join Us
+				<Icon icon="paper-plane-tilt" size="1.2em" color="white" />
+			</CallToAction>
 		</div>
 	</div>
 </nav>
