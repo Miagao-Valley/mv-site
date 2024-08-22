@@ -2,6 +2,8 @@ import type { APIRoute } from "astro";
 import { app } from "../../../firebase/server.ts";
 import { getFirestore } from "firebase-admin/firestore";
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request, redirect }) => {
     const formData = await request.formData();
     const name = formData.get("name")?.toString();
@@ -34,7 +36,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
             skills,
             interests,
             expectations,
-            suggestions
+            suggestions,
+            additionalInfo
         });
     } catch (error) {
         return new Response("Something went wrong" + error, {
