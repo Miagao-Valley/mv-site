@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const suggestions = formData.get("suggestions")?.toString();
     const additionalInfo = formData.get("additionalInfo")?.toString();
 
-    if (!name || !email || !course || !yearLevel || !source || !involvementType || !skills || !interests || !expectations || !suggestions) {
+    if (!course || !yearLevel || !source || !involvementType || !skills || !interests || !expectations || !suggestions) {
         return new Response("Missing required fields", {
             status: 400,
         });

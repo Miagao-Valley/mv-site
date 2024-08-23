@@ -1,101 +1,233 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <BaseLayout>
-    <main>
-        <form id="form" method="post" action="/api/test">
-            <ul>
-                <li>
-                    <label for="name">Name: </label>
-                    <input type="text" id="name" name="name" required />
-                </li>
-                <li>
-                    <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" required />
-                </li>
-                <li>
-                    <label for="course">Course: </label>
-                    <input type="text" id="course" name="course" required />
-                </li>
-                <li>
-                    <label for="yearLevel">Year Level: </label>
-                    <input
-                        type="number"
-                        id="yearLevel"
-                        name="yearLevel"
-                        required
-                    />
-                </li>
-                <li>
-                    <label for="source">How did you hear about us?</label>
-                    <input type="text" id="source" name="source" required />
-                </li>
-                <li>
-                    <label for="involvementType"
-                        >What type of involvement are you interested in?
-                    </label>
-                    <input
-                        type="text"
-                        id="involvementType"
-                        name="involvementType"
-                        required
-                    />
-                </li>
-                <li>
-                    <label for="skills"
-                        >Do you have any specific skills or expertise you would
-                        like to contribute?</label
-                    >
-                    <input type="text" id="skills" name="skills" required />
-                </li>
-                <li>
-                    <label for="interests"
-                        >Are there any areas where you would like to get
-                        involved or learn more?
-                    </label>
-                    <input
-                        type="text"
-                        id="interests"
-                        name="interests"
-                        required
-                    />
-                </li>
-                <li>
-                    <label for="expectations"
-                        >What are your expectations from Miagao Valley?
-                    </label>
-                    <input
-                        type="text"
-                        id="expectations"
-                        name="expectations"
-                        required
-                    />
-                </li>
-                <li>
-                    <label for="suggestions"
-                        >Do you have any suggestions for programs or activities
-                        you would like to see?
-                    </label>
-                    <input
-                        type="text"
-                        id="suggestions"
-                        name="suggestions"
-                        required
-                    />
-                </li>
-                <li>
-                    <label for="additionalInfo"
-                        >Is there any additional information or comments you
-                        would like to share?</label
-                    >
-                    <input type="text" id="additionalInfo" name="additionalInfo" required />
-                </li>
+    <main class="wrapper stack gap-8 lg:gap-15">
+        <div class="hero">
+            <Hero title="Interest Check" align="start" />
+        </div>
 
-                <li>
-                    <button type="submit">Submit</button>
-                </li>
-            </ul>
+        <form id="form" method="post" action="/api/interest">
+            <section>
+                <div class="section-title">
+                    <h2>Personal Information</h2>
+                </div>
+
+                <div class="section-content">
+                    <div class="stack">
+                        <label for="name"
+                            >Name: <span><i>(Optional)</i></span></label
+                        >
+                        <input type="text" id="name" name="name" />
+                    </div>
+
+                    <div class="stack">
+                        <label for="email"
+                            >Email: <span><i>(Optional)</i></span></label
+                        >
+                        <input type="email" id="email" name="email" />
+                    </div>
+
+                    <div class="stack">
+                        <label for="course">Course: </label>
+                        <input type="text" id="course" name="course" required />
+                    </div>
+
+                    <div class="stack">
+                        <label for="yearLevel">Year Level: </label>
+                        <select id="yearLevel" name="yearLevel" required>
+                            <option value="">--Please choose an option--</option
+                            >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="N">N</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="section-title">
+                    <h2>Survey</h2>
+                </div>
+
+                <div class="section-content stack">
+                    <div class="stack">
+                        <label for="source">How did you hear about us?</label>
+                        <input
+                            type="text"
+                            name="source"
+                            list="source"
+                            required
+                        />
+                        <datalist id="source">
+                            <option value="Social Media"></option>
+                            <option value="Word of Mouth"></option>
+                            <option value="Website"></option>
+                            <option value="Event"></option>
+                            <option value="Others (please specify)"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="stack">
+                        <label for="involvementType"
+                            >What type of involvement are you interested in?
+                        </label>
+                        <input
+                            type="text"
+                            name="involvementType"
+                            list="involvementType"
+                            required
+                        />
+                        <datalist id="involvementType">
+                            <option value="Membership"></option>
+                            <option value="Leadership"></option>
+                            <option value="Partnership/Collaboration"></option>
+                            <option value="Donating"></option>
+                            <option value="Attending Events"></option>
+                            <option value="Others (please specify)"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="stack">
+                        <label for="skills"
+                            >Do you have any specific skills or expertise you
+                            would like to contribute? (e.g. Project Management)</label
+                        >
+                        <input type="text" id="skills" name="skills" required />
+                    </div>
+
+                    <div class="stack">
+                        <label for="interests"
+                            >Are there any areas where you would like to get
+                            involved or learn more?
+                        </label>
+                        <input
+                            type="text"
+                            id="interests"
+                            name="interests"
+                            required
+                        />
+                    </div>
+
+                    <div class="stack">
+                        <label for="expectations"
+                            >What are your expectations from Miagao Valley?
+                        </label>
+                        <input
+                            type="text"
+                            id="expectations"
+                            name="expectations"
+                            required
+                        />
+                    </div>
+
+                    <div class="stack">
+                        <label for="suggestions"
+                            >Do you have any suggestions for programs or
+                            activities you would like to see?
+                        </label>
+                        <input
+                            type="text"
+                            id="suggestions"
+                            name="suggestions"
+                            required
+                        />
+                    </div>
+
+                    <div class="stack">
+                        <label for="additionalInfo"
+                            >Is there any additional information or comments you
+                            would like to share?</label
+                        >
+                        <input
+                            type="text"
+                            id="additionalInfo"
+                            name="additionalInfo"
+                            required
+                        />
+                    </div>
+                </div>
+            </section>
+            <input type="submit" value="Submit" />
         </form>
     </main>
 </BaseLayout>
+
+<style>
+    form {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.75rem;
+    }
+
+    section {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .section-title :global(h2) {
+        font-size: var(--text-xl);
+        color: var(--gray-200);
+    }
+
+    .section-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    datalist {
+        background-color: var(--gray-999_40);
+        border: 1px solid var(--gray-800);
+        border-radius: 75rem;
+        height: 2rem;
+        padding: 0 1rem;
+        font: var(--font-body);
+    }
+
+    input[type="submit"] {
+        width: fit-content;
+
+        text-align: center;
+        padding: 0.56em 2em;
+        gap: 0.8em;
+        color: var(--accent-text-over);
+        line-height: 1.1;
+        border-radius: 999rem;
+        background: var(--gradient-accent);
+        box-shadow: var(--shadow-md);
+        border: 0;
+        font-size: var(--text-lg);
+        font-family: var(--font-brand);
+        cursor: pointer;
+    }
+
+    @media (min-width: 50em) {
+        .hero {
+            padding: 0 5rem;
+        }
+
+        form {
+            padding: 0 5rem;
+            align-items: flex-end;
+        }
+
+        section {
+            grid-template: auto auto/1fr 2fr;
+            column-gap: 5rem;
+            row-gap: 2.5rem;
+        }
+
+        .section-content {
+            gap: 0.75rem;
+        }
+    }
+</style>
