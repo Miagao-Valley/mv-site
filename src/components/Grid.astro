@@ -14,7 +14,6 @@ const { variant, id} = Astro.props;
 <style>
 	.grid {
 		display: grid;
-		grid-auto-rows: 1fr;
 		gap: 1rem;
 		list-style: none;
 		padding: 0;
@@ -23,11 +22,6 @@ const { variant, id} = Astro.props;
 	.grid.small {
 		grid-template-columns: 1fr 1fr;
 		gap: 1.5rem;
-	}
-
-	/* If last row contains only one item, make it span both columns. */
-	.grid.small > :global(:last-child:nth-child(odd)) {
-		grid-column: 1 / 3;
 	}
 
 	@media (min-width: 50em) {
