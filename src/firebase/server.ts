@@ -28,3 +28,4 @@ const initApp = () => {
 }
 
 export const app = activeApps.length === 0 ? initApp() : activeApps[0];
+console.log(app);
