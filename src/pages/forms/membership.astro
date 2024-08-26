@@ -121,14 +121,46 @@ import "../../styles/forms.css";
                         </div>
 
                         <div class="stack">
-                            Are you willing to join/lead a committee?
+                            Which committee are you willing to join/lead on?
                             <label for="isCommittee">
-                                <input type="radio" name="isCommittee" required />
-                                Yes
+                                <input
+                                    type="radio"
+                                    name="isCommittee"
+                                    required
+                                />
+                                Operations/Memberships Department
                             </label>
+                            <p class="additional-text">
+                                Manages logistics, manpower for events, and
+                                member recruitment.
+                            </p>
                             <label for="isLeader">
                                 <input type="radio" name="isCommittee" />
-                                No
+                                Marketing and Creatives Department
+                            </label>
+                            <p class="additional-text">
+                                Oversees social media management and publication
+                                of promotional materials.
+                            </p>
+                            <label for="isLeader">
+                                <input type="radio" name="isCommittee" />
+                                Communications Department
+                            </label>
+                            <p class="additional-text">
+                                Handles communication with non-regular members
+                                and manages external partnerships.
+                            </p>
+                            <label for="isLeader">
+                                <input type="radio" name="isCommittee" />
+                                Documentations Department
+                            </label>
+                            <p class="additional-text">
+                                Maintains records of meetings, manages
+                                organizational documents, and tracks membership.
+                            </p>
+                            <label for="isLeader">
+                                <input type="radio" name="isCommittee" />
+                                I'm not interested.
                             </label>
                         </div>
 
@@ -194,6 +226,11 @@ import "../../styles/forms.css";
     img {
         padding: 0.5rem 0;
     }
+
+    p.additional-text {
+        margin-left: 1rem;
+    }
+
     @media (min-width: 50em) {
         .hero {
             padding: 0 5rem;
