@@ -10,15 +10,14 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const email = formData.get("email")?.toString();
     const course = formData.get("course")?.toString();
     const yearLevel = formData.get("yearLevel")?.toString();
-    const source = formData.get("source")?.toString();
-    const involvementType = formData.get("involvementType")?.toString();
-    const skills = formData.get("skills")?.toString();
-    const interests = formData.get("interests")?.toString();
-    const expectations = formData.get("expectations")?.toString();
-    const suggestions = formData.get("suggestions")?.toString();
+    const projects = formData.get("projects")?.toString();
+    const goals = formData.get("goals")?.toString();
+    const isLeader = formData.get("isLeader")?.toString();
+    const proposal = formData.get("proposals")?.toString();
     const additionalInfo = formData.get("additionalInfo")?.toString();
+    const isWilling = formData.get("isWilling")?.toString();
 
-    const isIncomplete = !course || !yearLevel || !source || !involvementType || !skills || !interests || !expectations || !suggestions;
+    const isIncomplete = name && email && course && yearLevel && goals && isLeader && isWilling;
 
     if (isIncomplete) {
         return new Response("Missing required fields", {
@@ -27,18 +26,16 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     }
     try {
         const db = getFirestore(app);
-        const testRef = db.collection("interest-check");
+        const testRef = db.collection("membership");
         await testRef.add({
             name,
             email,
             course,
             yearLevel,
-            source,
-            involvementType,
-            skills,
-            interests,
-            expectations,
-            suggestions,
+            projects,
+            goals,
+            isLeader,
+            proposal,
             additionalInfo
         });
     } catch (error) {

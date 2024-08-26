@@ -1,0 +1,199 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+
+import "../../styles/forms.css";
+---
+
+<BaseLayout>
+    <main class="wrapper stack gap-8 lg:gap-15">
+        <div class="hero">
+            <Hero title="Membership Form" align="start" />
+        </div>
+
+        <form id="form" method="post" action="/api/membership">
+            <div class="form-contents">
+                <section>
+                    <div class="section-title">
+                        <h2>Personal Information</h2>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="stack">
+                            <label for="name">Full Name: </label>
+                            <input type="text" id="name" name="name" required />
+                        </div>
+
+                        <div class="stack">
+                            <label for="email">Email: </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="course">Course: </label>
+                            <input
+                                type="text"
+                                id="course"
+                                name="course"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="yearLevel">Year Level: </label>
+                            <select id="yearLevel" name="yearLevel" required>
+                                <option value=""
+                                    >--Please choose an option--</option
+                                >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="N">N</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title">
+                        <h2>Survey</h2>
+                    </div>
+
+                    <div class="section-content stack">
+                        <div class="stack">
+                            <label for="projects"
+                                >What past projects have you worked on?
+                                <span class="additional-text"> (Optional)</span>
+                                <br />
+                                <span class="additional-text">
+                                    (Please provide links to your portfolio,
+                                    GitHub, LinkedIn or descriptions of relevant
+                                    projects.)</span
+                                >
+                            </label>
+                            <input
+                                type="text"
+                                name="projects"
+                                id="projects"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="goals"
+                                >What are your goals for joining Miagao Valley?
+                            </label>
+                            <input
+                                type="text"
+                                name="goals"
+                                list="goals"
+                                required
+                            />
+                            <datalist id="goals">
+                                <option value="Learn new skills"></option>
+                                <option value="Work on real-world projects"
+                                ></option>
+                                <option value="Collaborate with others"
+                                ></option>
+                                <option value="Others (please specify)"
+                                ></option>
+                            </datalist>
+                        </div>
+
+                        <div class="stack">
+                            Are you willing to take on a leadership role in a
+                            project?
+                            <label for="isLeader">
+                                <input type="radio" name="isLeader" required />
+                                Yes
+                            </label>
+                            <label for="isLeader">
+                                <input type="radio" name="isLeader" />
+                                No
+                            </label>
+                            <label for="isLeader">
+                                <input type="radio" name="isLeader" />
+                                Maybe <span class="additional-text"
+                                    >(depending on the project)</span
+                                >
+                            </label>
+                        </div>
+
+                        <div class="stack">
+                            <label for="proposals"
+                                >Do you have any specific ideas or projects
+                                you'd like to propose for the organization?
+                                <span class="additional-text"> (Optional)</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="proposals"
+                                id="proposals"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="additional-info">
+                                Is there anything else you would like us to know
+                                about you?
+                                <span class="additional-text"> (Optional)</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="additional-info"
+                                id="additional-info"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label>
+                                Are you willing to adhere to the guidelines and
+                                standards set by Miagao Valley?
+                                <span class="additional-text"
+                                    >(subject to changes)</span
+                                >
+                            </label>
+                            <picture>
+                                    <source
+                                        srcset="/assets/misc/guidelines-small.jpg"
+                                        media="(max-width: 40em)"
+                                    />
+                                    <img
+                                        src="/assets/misc/guidelines.jpg"
+                                    />
+                                </picture>
+                            <label for="isWilling">
+                                <input type="radio" name="isWilling" required />
+                                Yes
+                            </label>
+                            <label for="isWilling">
+                                <input type="radio" name="isWilling" />
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <input type="submit" value="Join" />
+        </form>
+    </main>
+</BaseLayout>
+
+<style>
+    img {
+        padding: 0.5rem 0;
+    }
+    @media (min-width: 50em) {
+        .hero {
+            padding: 0 5rem;
+        }
+    }
+</style>

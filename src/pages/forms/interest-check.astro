@@ -1,0 +1,193 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+
+import "../../styles/forms.css";
+---
+
+<BaseLayout>
+    <main class="wrapper stack gap-8 lg:gap-15">
+        <div class="hero">
+            <Hero title="Interest Check" align="start" />
+        </div>
+
+        <form id="form" method="post" action="/api/interest">
+            <div class="form-contents">
+                <section>
+                    <div class="section-title">
+                        <h2>Personal Information</h2>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="stack">
+                            <label for="name"
+                                >Name: <span class="additional-text">
+                                    (Optional)</span
+                                ></label
+                            >
+                            <input type="text" id="name" name="name" />
+                        </div>
+
+                        <div class="stack">
+                            <label for="email"
+                                >Email: <span class="additional-text">
+                                    (Optional)</span
+                                ></label
+                            >
+                            <input type="email" id="email" name="email" />
+                        </div>
+
+                        <div class="stack">
+                            <label for="course">Course: </label>
+                            <input
+                                type="text"
+                                id="course"
+                                name="course"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="yearLevel">Year Level: </label>
+                            <select id="yearLevel" name="yearLevel" required>
+                                <option value=""
+                                    >--Please choose an option--</option
+                                >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="N">N</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="section-title">
+                        <h2>Survey</h2>
+                    </div>
+
+                    <div class="section-content stack">
+                        <div class="stack">
+                            <label for="source"
+                                >How did you hear about us?</label
+                            >
+                            <input
+                                type="text"
+                                name="source"
+                                list="source"
+                                required
+                            />
+                            <datalist id="source">
+                                <option value="Social Media"></option>
+                                <option value="Word of Mouth"></option>
+                                <option value="Website"></option>
+                                <option value="Event"></option>
+                                <option value="Others (please specify)"
+                                ></option>
+                            </datalist>
+                        </div>
+
+                        <div class="stack">
+                            <label for="involvementType"
+                                >What type of involvement are you interested in?
+                            </label>
+                            <input
+                                type="text"
+                                name="involvementType"
+                                list="involvementType"
+                                required
+                            />
+                            <datalist id="involvementType">
+                                <option value="Membership"></option>
+                                <option value="Leadership"></option>
+                                <option value="Partnership/Collaboration"
+                                ></option>
+                                <option value="Donating"></option>
+                                <option value="Attending Events"></option>
+                                <option value="Others (please specify)"
+                                ></option>
+                            </datalist>
+                        </div>
+
+                        <div class="stack">
+                            <label for="skills"
+                                >Do you have any specific skills or expertise
+                                you would like to contribute? (e.g. Project
+                                Management)</label
+                            >
+                            <input
+                                type="text"
+                                id="skills"
+                                name="skills"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="interests"
+                                >Are there any areas where you would like to get
+                                involved or learn more?
+                            </label>
+                            <input
+                                type="text"
+                                id="interests"
+                                name="interests"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="expectations"
+                                >What are your expectations from Miagao Valley?
+                            </label>
+                            <input
+                                type="text"
+                                id="expectations"
+                                name="expectations"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="suggestions"
+                                >Do you have any suggestions for programs or
+                                activities you would like to see?
+                            </label>
+                            <input
+                                type="text"
+                                id="suggestions"
+                                name="suggestions"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="additionalInfo"
+                                >Is there any additional information or comments
+                                you would like to share?
+                                <span class="additional-text">
+                                    (Optional)</span
+                                ></label
+                            >
+                            <input
+                                type="text"
+                                id="additionalInfo"
+                                name="additionalInfo"
+                            />
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </main>
+</BaseLayout>
+
+<style>
+    @media (min-width: 50em) {
+        .hero {
+            padding: 0 5rem;
+        }
+    }
+</style>

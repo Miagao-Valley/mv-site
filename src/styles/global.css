@@ -139,6 +139,45 @@ h5 {
 	font-size: var(--text-xl);
 }
 
+input[type="text"],
+input[type="email"],
+select {
+	background-color: var(--gray-999_40);
+	border: 1px solid var(--gray-800);
+	border-radius: 75rem;
+	height: 2rem;
+	padding: 0 1rem;
+	font: var(--font-body);
+	outline: none;
+}
+
+input[type="submit"] {
+	width: fit-content;
+
+	text-align: center;
+	padding: 0.56em 2em;
+	gap: 0.8em;
+	color: var(--accent-text-over);
+	line-height: 1.1;
+	border-radius: 999rem;
+	background: var(--gradient-accent);
+	box-shadow: var(--shadow-md);
+	border: 0;
+	font-size: var(--text-lg);
+	font-family: var(--font-brand);
+	cursor: pointer;
+}
+
+input[type="radio"] {
+	accent-color: var(--accent-regular);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+	border: 2px solid var(--accent-regular);
+}
+
 /* Utilities */
 
  .hidden {
