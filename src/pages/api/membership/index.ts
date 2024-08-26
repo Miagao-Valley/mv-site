@@ -13,11 +13,12 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const projects = formData.get("projects")?.toString();
     const goals = formData.get("goals")?.toString();
     const isLeader = formData.get("isLeader")?.toString();
-    const proposal = formData.get("proposals")?.toString();
-    const additionalInfo = formData.get("additionalInfo")?.toString();
+    const isCommittee = formData.get("isCommittee")?.toString();
+    const proposals = formData.get("proposals")?.toString();
+    const additionalInfo = formData.get("additional-info")?.toString();
     const isWilling = formData.get("isWilling")?.toString();
 
-    const isIncomplete = name && email && course && yearLevel && goals && isLeader && isWilling;
+    const isIncomplete = !(name && email && course && yearLevel && goals && isLeader && isCommittee && isWilling);
 
     if (isIncomplete) {
         return new Response("Missing required fields", {
@@ -26,8 +27,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     }
     try {
         const db = getFirestore(app);
-        const testRef = db.collection("membership");
-        await testRef.add({
+        const membershipRef = db.collection("membership");
+        await membershipRef.add({
             name,
             email,
             course,
@@ -35,13 +36,15 @@ export const POST: APIRoute = async ({ request, redirect }) => {
             projects,
             goals,
             isLeader,
-            proposal,
-            additionalInfo
+            isCommittee,
+            proposals,
+            additionalInfo,
+            isWilling
         });
     } catch (error) {
         return new Response("Something went wrong" + error, {
             status: 500,
         });
     }
-    return redirect("/");
+    return redirect("https://discord.gg/RXhsYtQSbe");
 };

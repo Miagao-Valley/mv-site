@@ -27,8 +27,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     }
     try {
         const db = getFirestore(app);
-        const testRef = db.collection("interest-check");
-        await testRef.add({
+        const interestRef = db.collection("interest-check");
+        await interestRef.add({
             name,
             email,
             course,

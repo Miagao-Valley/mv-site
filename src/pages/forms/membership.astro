@@ -77,12 +77,7 @@ import "../../styles/forms.css";
                                     projects.)</span
                                 >
                             </label>
-                            <input
-                                type="text"
-                                name="projects"
-                                id="projects"
-                                required
-                            />
+                            <input type="text" name="projects" id="projects" />
                         </div>
 
                         <div class="stack">
@@ -126,6 +121,18 @@ import "../../styles/forms.css";
                         </div>
 
                         <div class="stack">
+                            Are you willing to join/lead a committee?
+                            <label for="isCommittee">
+                                <input type="radio" name="isCommittee" required />
+                                Yes
+                            </label>
+                            <label for="isLeader">
+                                <input type="radio" name="isCommittee" />
+                                No
+                            </label>
+                        </div>
+
+                        <div class="stack">
                             <label for="proposals"
                                 >Do you have any specific ideas or projects
                                 you'd like to propose for the organization?
@@ -135,7 +142,6 @@ import "../../styles/forms.css";
                                 type="text"
                                 name="proposals"
                                 id="proposals"
-                                required
                             />
                         </div>
 
@@ -149,7 +155,6 @@ import "../../styles/forms.css";
                                 type="text"
                                 name="additional-info"
                                 id="additional-info"
-                                required
                             />
                         </div>
 
@@ -162,14 +167,12 @@ import "../../styles/forms.css";
                                 >
                             </label>
                             <picture>
-                                    <source
-                                        srcset="/assets/misc/guidelines-small.jpg"
-                                        media="(max-width: 40em)"
-                                    />
-                                    <img
-                                        src="/assets/misc/guidelines.jpg"
-                                    />
-                                </picture>
+                                <source
+                                    srcset="/assets/misc/guidelines-small.jpg"
+                                    media="(max-width: 40em)"
+                                />
+                                <img src="/assets/misc/guidelines.jpg" />
+                            </picture>
                             <label for="isWilling">
                                 <input type="radio" name="isWilling" required />
                                 Yes
