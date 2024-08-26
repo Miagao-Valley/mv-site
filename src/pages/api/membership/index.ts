@@ -10,15 +10,15 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const email = formData.get("email")?.toString();
     const course = formData.get("course")?.toString();
     const yearLevel = formData.get("yearLevel")?.toString();
-    const source = formData.get("source")?.toString();
-    const involvementType = formData.get("involvementType")?.toString();
-    const skills = formData.get("skills")?.toString();
-    const interests = formData.get("interests")?.toString();
-    const expectations = formData.get("expectations")?.toString();
-    const suggestions = formData.get("suggestions")?.toString();
-    const additionalInfo = formData.get("additionalInfo")?.toString();
+    const projects = formData.get("projects")?.toString();
+    const goals = formData.get("goals")?.toString();
+    const isLeader = formData.get("isLeader")?.toString();
+    const isCommittee = formData.get("isCommittee")?.toString();
+    const proposals = formData.get("proposals")?.toString();
+    const additionalInfo = formData.get("additional-info")?.toString();
+    const isWilling = formData.get("isWilling")?.toString();
 
-    const isIncomplete = !course || !yearLevel || !source || !involvementType || !skills || !interests || !expectations || !suggestions;
+    const isIncomplete = !(name && email && course && yearLevel && goals && isLeader && isCommittee && isWilling);
 
     if (isIncomplete) {
         return new Response("Missing required fields", {
@@ -27,24 +27,24 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     }
     try {
         const db = getFirestore(app);
-        const interestRef = db.collection("interest-check");
-        await interestRef.add({
+        const membershipRef = db.collection("membership");
+        await membershipRef.add({
             name,
             email,
             course,
             yearLevel,
-            source,
-            involvementType,
-            skills,
-            interests,
-            expectations,
-            suggestions,
-            additionalInfo
+            projects,
+            goals,
+            isLeader,
+            isCommittee,
+            proposals,
+            additionalInfo,
+            isWilling
         });
     } catch (error) {
         return new Response("Something went wrong" + error, {
             status: 500,
         });
     }
-    return redirect("/");
+    return redirect("https://discord.gg/RXhsYtQSbe");
 };
