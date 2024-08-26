@@ -105,15 +105,28 @@ import "../../styles/forms.css";
                             Are you willing to take on a leadership role in a
                             project?
                             <label for="isLeader">
-                                <input type="radio" name="isLeader" required />
+                                <input
+                                    type="radio"
+                                    name="isLeader"
+                                    value="Yes"
+                                    required
+                                />
                                 Yes
                             </label>
                             <label for="isLeader">
-                                <input type="radio" name="isLeader" />
+                                <input
+                                    type="radio"
+                                    name="isLeader"
+                                    value="No"
+                                />
                                 No
                             </label>
                             <label for="isLeader">
-                                <input type="radio" name="isLeader" />
+                                <input
+                                    type="radio"
+                                    name="isLeader"
+                                    value="Maybe"
+                                />
                                 Maybe <span class="additional-text"
                                     >(depending on the project)</span
                                 >
@@ -126,6 +139,7 @@ import "../../styles/forms.css";
                                 <input
                                     type="radio"
                                     name="isCommittee"
+                                    value="Operations/Memberships Department"
                                     required
                                 />
                                 Operations/Memberships Department
@@ -135,15 +149,24 @@ import "../../styles/forms.css";
                                 member recruitment.
                             </p>
                             <label for="isLeader">
-                                <input type="radio" name="isCommittee" />
+                                <input
+                                    type="radio"
+                                    name="isCommittee"
+                                    value="Marketing and Creatives Department"
+                                />
                                 Marketing and Creatives Department
                             </label>
                             <p class="additional-text">
                                 Oversees social media management and publication
                                 of promotional materials.
                             </p>
+
                             <label for="isLeader">
-                                <input type="radio" name="isCommittee" />
+                                <input
+                                    type="radio"
+                                    name="isCommittee"
+                                    value="Communications Department"
+                                />
                                 Communications Department
                             </label>
                             <p class="additional-text">
@@ -151,7 +174,11 @@ import "../../styles/forms.css";
                                 and manages external partnerships.
                             </p>
                             <label for="isLeader">
-                                <input type="radio" name="isCommittee" />
+                                <input
+                                    type="radio"
+                                    name="isCommittee"
+                                    value="Documentations Department"
+                                />
                                 Documentations Department
                             </label>
                             <p class="additional-text">
@@ -159,7 +186,11 @@ import "../../styles/forms.css";
                                 organizational documents, and tracks membership.
                             </p>
                             <label for="isLeader">
-                                <input type="radio" name="isCommittee" />
+                                <input
+                                    type="radio"
+                                    name="isCommittee"
+                                    value="I'm not interested."
+                                />
                                 I'm not interested.
                             </label>
                         </div>
@@ -206,11 +237,20 @@ import "../../styles/forms.css";
                                 <img src="/assets/misc/guidelines.jpg" />
                             </picture>
                             <label for="isWilling">
-                                <input type="radio" name="isWilling" required />
+                                <input
+                                    type="radio"
+                                    name="isWilling"
+                                    value="Yes"
+                                    required
+                                />
                                 Yes
                             </label>
                             <label for="isWilling">
-                                <input type="radio" name="isWilling" />
+                                <input
+                                    type="radio"
+                                    name="isWilling"
+                                    value="No"
+                                />
                                 No
                             </label>
                         </div>
@@ -220,20 +260,20 @@ import "../../styles/forms.css";
             <input type="submit" value="Join" />
         </form>
     </main>
-</BaseLayout>
 
-<style>
-    img {
-        padding: 0.5rem 0;
-    }
-
-    p.additional-text {
-        margin-left: 1rem;
-    }
-
-    @media (min-width: 50em) {
-        .hero {
-            padding: 0 5rem;
+    <style>
+        img {
+            padding: 0.5rem 0;
         }
-    }
-</style>
+
+        p.additional-text {
+            margin: 0.25rem 1rem;
+        }
+
+        @media (min-width: 50em) {
+            .hero {
+                padding: 0 5rem;
+            }
+        }
+    </style>
+</BaseLayout>
