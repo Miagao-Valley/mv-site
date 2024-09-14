@@ -1,0 +1,281 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Hero from "../../../components/Hero.astro";
+
+import "../../../styles/forms.css";
+---
+
+<BaseLayout>
+    <main class="wrapper stack gap-8 lg:gap-15">
+        <div class="hero">
+            <Hero title="Feedback Form" align="start" />
+        </div>
+
+        <form id="form" method="post" action="/api/onboarding">
+            <div class="form-contents">
+                <section>
+                    <div class="section-title">
+                        <h2>Personal Information</h2>
+                    </div>
+
+                    <div class="section-content">
+                        <div class="stack">
+                            <label for="name">Full Name: </label>
+                            <span class="additional-text"> (Optional)</span>
+                            <input type="text" id="name" name="name" />
+                        </div>
+
+                        <div class="stack">
+                            <label for="email">Email: </label>
+                            <span class="additional-text"> (Optional)</span>
+                            <input type="email" id="email" name="email" />
+                        </div>
+
+                        <div class="stack">
+                            <label for="course">Course: </label>
+                            <input
+                                type="text"
+                                id="course"
+                                name="course"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="yearLevel">Year Level: </label>
+                            <select id="yearLevel" name="yearLevel" required>
+                                <option value=""
+                                    >--Please choose an option--</option
+                                >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="N">N</option>
+                                <option value="Alumni">Alumni</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title">
+                        <h2>Overall Experience</h2>
+                    </div>
+
+                    <div class="section-content stack">
+                        <div class="stack">
+                            <label for="experienceRate"
+                                >How would you rate your overall experience with
+                                the onboarding event?
+                            </label>
+                            <span class="additional-text">
+                                (1 being the lowest to 5 being the highest)</span
+                            >
+
+                            <input
+                                type="range"
+                                name="experienceRate"
+                                id="experienceRate"
+                                min="1"
+                                max="5"
+                                list="markers"
+                                required
+                            />
+
+                            <datalist id="markers">
+                                <option value="1" label="1"></option>
+                                <option value="2" label="2"></option>
+                                <option value="3" label="3"></option>
+                                <option value="4" label="4"></option>
+                                <option value="5" label="5"></option>
+                            </datalist>
+                        </div>
+
+                        <div class="stack">
+                            <label for="isHelpful">
+                                Did you find the event to help learn about our
+                                community?
+                                <span class="additional-text">
+                                    (1 being the lowest to 5 being the highest)</span
+                                >
+                            </label>
+
+                            <input
+                                type="range"
+                                name="isHelpful"
+                                min="1"
+                                max="5"
+                                list="markers"
+                                required
+                            />
+                            <datalist id="markers">
+                                <option value="1" label="1"></option>
+                                <option value="2" label="2"></option>
+                                <option value="3" label="3"></option>
+                                <option value="4" label="4"></option>
+                                <option value="5" label="5"></option>
+                            </datalist>
+                        </div>
+
+                        <div class="stack">
+                            <label for="likedEvent"
+                                >What did you like most about the event?
+                            </label>
+                            <input
+                                type="text"
+                                name="likedEvent"
+                                id="likedEvent"
+                                required
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title">
+                        <h2>Understanding and Alignment</h2>
+                    </div>
+
+                    <div class="section-content stack">
+                        <div class="stack">
+                            <label for="mvImage"
+                                >What image do you now have in mind regarding
+                                Miagao Valley after the onboarding event?
+                            </label>
+                            <input
+                                type="text"
+                                name="mvImage"
+                                id="mvImage"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="goalAlignment"
+                                >Do you think the goals you have in mind for
+                                joining Miagao Valley are aligned with Miagao
+                                Valley's goals? Why?
+                            </label>
+                            <input
+                                type="text"
+                                name="goalAlignment"
+                                id="goalAlignment"
+                                required
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title">
+                        <h2>Future Engagement</h2>
+                    </div>
+
+                    <div class="section-content stack">
+                        <div class="stack">
+                            Are you still willing to join our community after
+                            the onboarding event?
+                            <label for="willJoin">
+                                <input
+                                    type="radio"
+                                    name="willJoin"
+                                    id="willJoin"
+                                    required
+                                />Yes
+                            </label>
+                            <label for="willJoin">
+                                <input
+                                    type="radio"
+                                    name="willJoin"
+                                    id="willJoin"
+                                />No
+                            </label>
+                        </div>
+
+                        <div class="stack">
+                            <label for="joinFactors"
+                                >What factors influenced your decision to join
+                                the community?
+                            </label>
+                            <input
+                                type="text"
+                                name="joinFactors"
+                                id="joinFactors"
+                                required
+                            />
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="section-title">
+                        <h2>Suggestions for Improvement</h2>
+                    </div>
+
+                    <div class="section-content stack">
+                        <div class="stack">
+                            <label for="toImprove"
+                                >What aspects of the onboarding event do you
+                                think could be improved?
+                            </label>
+                            <input
+                                type="text"
+                                name="toImprove"
+                                id="toImprove"
+                                required
+                            />
+                        </div>
+
+                        <div class="stack">
+                            <label for="additional"
+                                >Any additional comments or suggestions?
+                            </label>
+                            <span class="additional-text"> (Optional)</span>
+                            <input
+                                type="text"
+                                name="additional"
+                                id="additional"
+                            />
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <input type="submit" value="Submit" />
+        </form>
+    </main>
+
+    <style>
+        img {
+            padding: 0.5rem 0;
+        }
+
+        datalist {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            writing-mode: vertical-lr;
+            width: 200px;
+            font-size: 0.75rem;
+        }
+
+        option {
+            padding-top: 0.25em;
+        }
+
+        input[type="range"] {
+            width: 200px;
+            margin: 0;
+        }
+
+        p.additional-text {
+            margin: 0.25rem 1rem;
+        }
+
+        @media (min-width: 50em) {
+            .hero {
+                padding: 0 5rem;
+            }
+        }
+    </style>
+</BaseLayout>
