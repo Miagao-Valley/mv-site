@@ -10,6 +10,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const email = formData.get("email")?.toString();
     const course = formData.get("course")?.toString();
     const yearLevel = formData.get("yearLevel")?.toString();
+    const experienceRate = formData.get("experienceRate")?.toString();
     const isHelpful = formData.get("isHelpful")?.toString();
     const likedEvent = formData.get("likedEvent")?.toString();
     const mvImage = formData.get("mvImage")?.toString();
@@ -19,7 +20,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     const toImprove = formData.get("toImprove")?.toString();
     const additional = formData.get("additional")?.toString();
 
-    const isIncomplete = !(course && yearLevel && isHelpful && likedEvent && mvImage && goalAlignment && willJoin && joinFactors && toImprove);
+    const isIncomplete = !(course && yearLevel && experienceRate && isHelpful && likedEvent && mvImage && goalAlignment && willJoin && joinFactors && toImprove);
 
     if (isIncomplete) {
         return new Response("Missing required fields", {
@@ -34,6 +35,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
             email,
             course,
             yearLevel,
+            experienceRate,
             isHelpful,
             likedEvent,
             mvImage,
